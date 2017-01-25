@@ -1,0 +1,13 @@
+<div class="form-container" id="toolbar">
+  <header [@fallIn]="state">
+    <button (click)="logout()" class="basic-btn">Logout</button>
+    <button (click)="logout()" class="basic-btn">Inicio</button>
+    <button (click)="logout()" class="basic-btn">Final</button>
+    <button (click)="logout()" class="basic-btn">{{ name.auth.displayName }}</button>
+
+  </header>
+  <div id="page" [@moveInLeft]="state">
+    <app-menu></app-menu>
+  </div>
+
+</div>
