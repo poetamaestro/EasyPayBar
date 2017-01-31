@@ -16,6 +16,10 @@ import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
 import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
+import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
+import { RecargaComponent } from './recarga/recarga.component';
+import { ComprasComponent } from './compras/compras.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { routes } from './app.routes';
     LoginComponent,
     EmailComponent,
     SignupComponent,
-    MembersComponent
+    MembersComponent,
+    CargarMenuComponent,
+    ProveedorComponent,
+    RecargaComponent,
+    ComprasComponent
   ],
   imports: [
     BrowserModule,

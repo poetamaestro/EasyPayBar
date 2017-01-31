@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
     this.af.auth.subscribe(auth => {
       if(auth) {
-        this.router.navigateByUrl('/members');
+        this.router.navigateByUrl('/menu');
       }
     });
   }
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
             this.userFb = {};
           }
         });
-        this.router.navigate(['/members']);
+        this.router.navigate(['/menu']);
       }).catch(
       (err) => {
         this.error = err;

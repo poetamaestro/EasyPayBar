@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+
 
 @Component({
   selector: 'app-nav',
@@ -7,8 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af: AngularFire,private router: Router) {
 
+
+  }
+  a_login(){
+    this.router.navigate(['/login']);
+  }
+  a_logout() {
+    this.af.auth.logout();
+    console.log('logged out');
+    this.router.navigateByUrl('/menu');
+  }
+  a_cargarMenu() {
+
+
+    this.router.navigateByUrl('/cargar');
+  }
   ngOnInit() {
   }
 

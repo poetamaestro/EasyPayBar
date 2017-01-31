@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  name: any;
+  state: string = '';
+
+  constructor(public af: AngularFire,private router: Router) {
+
+    this.af.auth.subscribe(auth => {
+      if(auth) {
+        this.name = auth;
+      }
+    });
+
+  }
 
   ngOnInit() {
   }

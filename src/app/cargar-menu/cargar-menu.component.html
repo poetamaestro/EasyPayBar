@@ -1,0 +1,42 @@
+<app-nav></app-nav>
+<div class="jumbotron hero">
+  <div id="menu">
+    <div class="container work-container">
+      <form>
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="txtNombre">
+            </div>
+            <div class="form-group">
+              <label for="categoria">Categoria</label>
+              <select class="custom-select">
+                <option selected>- Selecionar -</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="precio">Precio</label>
+              <input type="number" class="form-control" id="txtPrecio">
+            </div>
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea class="form-control" id="txtDecripcion" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="col-md-5">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-default">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Guardar
+        </button>
+        <button type="submit" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
