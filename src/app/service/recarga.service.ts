@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { Recarga } from './typeScript/recarga';
+import { Recarga } from './../typeScript/recarga';
 
 @Injectable()
 export class RecargaService {

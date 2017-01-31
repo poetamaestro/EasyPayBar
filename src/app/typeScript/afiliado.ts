@@ -1,9 +1,12 @@
+import { Compra } from "./compra";
+import { Recarga } from "./recarga";
+
 export class Afiliado{
 	key: number;
-	compras: Array<number>;
+	compras: Array<Compra>;
 	fecha_afiliacion: Date;
 	nombre: string;
-	recargas: Array<number>;
+	recargas: Array<Recarga>;
 	saldo: number;
 	uid: string;
 

@@ -1,9 +1,12 @@
+import { Afiliado } from "./afiliado";
+import { Categoria } from "./categoria";
+
 export class Proveedor{
 	key: number;
-	afiliados: Array<number>;
+	afiliados: Array<Afiliado>;
 	apellido: string;
 	bar: string;
-	categoria:Array<number>;
+	categoria:Array<Categoria>;
 	nombre: string;
 
 	constructor(){

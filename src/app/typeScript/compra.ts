@@ -1,7 +1,9 @@
+import { DetalleCompra } from "./detalleCompra";
+
 export class Compra {
 	
 	key: number;
-	detalleCompra: Array<number>;
+	detalleCompra: Array<DetalleCompra>;
 	fecha_Compra: Date;
 	total: number;
 	

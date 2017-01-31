@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { Proveedor } from './typeScript/proveedor';
+import { Proveedor } from './../typeScript/proveedor';
 
 @Injectable()
 export class ProveedorService {
