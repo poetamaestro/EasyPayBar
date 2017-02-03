@@ -14,6 +14,8 @@ import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ComprasComponent} from './compras/compras.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import {  RecargaComponent } from './recarga/recarga.component';
+import {  MenuAdminComponent } from './menu-admin/menu-admin.component';
+
 export const router: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]  },
@@ -24,7 +26,8 @@ export const router: Routes = [
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path:'compras', component: ComprasComponent},
   { path: 'proveedor', component: ProveedorComponent},
-  {path: 'recarga', component: RecargaComponent}
+  {path: 'recarga', component: RecargaComponent},
+  { path: 'menu-admin', component: MenuAdminComponent , canActivate: [AuthGuard]  }
 
 ]
 
