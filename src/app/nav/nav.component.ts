@@ -22,11 +22,7 @@ export class NavComponent implements OnInit {
     console.log('logged out');
     this.router.navigateByUrl('/menu');
   }
-  a_cargarMenu() {
 
-
-    this.router.navigateByUrl('/cargar');
-  }
   ngOnInit() {
   }
 

@@ -42,7 +42,7 @@ import { ClienteComponent } from './cliente/cliente.component';
     RecargaComponent,
     ComprasComponent,
 
-    MenuAdminComponent
+    MenuAdminComponent,
 
     ClienteComponent
 
