@@ -20,11 +20,11 @@ import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { RecargaComponent } from './recarga/recarga.component';
 import { ComprasComponent } from './compras/compras.component';
-<<<<<<< HEAD
+
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
-=======
+
 import { ClienteComponent } from './cliente/cliente.component';
->>>>>>> origin/master
+
 
 
 @NgModule({
@@ -41,11 +41,11 @@ import { ClienteComponent } from './cliente/cliente.component';
     ProveedorComponent,
     RecargaComponent,
     ComprasComponent,
-<<<<<<< HEAD
+
     MenuAdminComponent
-=======
+
     ClienteComponent
->>>>>>> origin/master
+
   ],
   imports: [
     BrowserModule,
