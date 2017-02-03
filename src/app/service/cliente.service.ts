@@ -8,11 +8,11 @@ export class ClienteService {
 cliente : FirebaseListObservable<Cliente[]>;
 
   constructor(private db: AngularFireDatabase) {
-  	this.cliente = db.list('/typeScript/clientes');
+  	this.cliente = db.list('/cliente');
   }
 
   getClientes(): FirebaseListObservable<Cliente[]>{
-  	return this.db.list('/typeScript/clientes');
+  	return this.db.list('/cliente');
   }
 
   addCliente(nuevoCliente: Cliente){

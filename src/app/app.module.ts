@@ -20,6 +20,7 @@ import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { RecargaComponent } from './recarga/recarga.component';
 import { ComprasComponent } from './compras/compras.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ComprasComponent } from './compras/compras.component';
     CargarMenuComponent,
     ProveedorComponent,
     RecargaComponent,
-    ComprasComponent
+    ComprasComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,9 @@ import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ComprasComponent} from './compras/compras.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import {  RecargaComponent } from './recarga/recarga.component';
+import { ClienteComponent } from './cliente/cliente.component';
+
+
 export const router: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]  },
@@ -22,10 +25,10 @@ export const router: Routes = [
   { path: 'login-email', component: EmailComponent },
   { path: 'cargar', component: CargarMenuComponent },
   { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
-  { path:'compras', component: ComprasComponent},
-  { path: 'proveedor', component: ProveedorComponent},
-  {path: 'recarga', component: RecargaComponent}
-
+  { path:'compras', component: ComprasComponent },
+  { path: 'proveedor', component: ProveedorComponent },
+  { path: 'recarga', component: RecargaComponent },
+  { path: 'cliente', component: ClienteComponent}
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
