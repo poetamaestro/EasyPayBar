@@ -14,6 +14,7 @@ import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ComprasComponent} from './compras/compras.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import {  RecargaComponent } from './recarga/recarga.component';
+import {  CategoriaComponent } from './categoria/categoria.component';
 import {  MenuAdminComponent } from './menu-admin/menu-admin.component';
 
 import { ClienteComponent } from './cliente/cliente.component';
@@ -33,7 +34,8 @@ export const router: Routes = [
   { path:'compras', component: ComprasComponent },
   { path: 'proveedor', component: ProveedorComponent },
   { path: 'recarga', component: RecargaComponent },
-  { path: 'cliente', component: ClienteComponent}
+  { path: 'cliente', component: ClienteComponent},
+  { path: 'categoria', component: CategoriaComponent}
 
 ]
 

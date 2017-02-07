@@ -1,0 +1,27 @@
+<app-nav></app-nav>
+<div class="container">
+<h1>{{titulo}}</h1>
+  <table class="table table-hovered">
+  <thead>
+  	<tr>
+  	
+  		<th>Imagen</th>
+  		<th>Nombre</th>
+  		<th>Precio</th>
+  		<th>Veces</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<tr *ngFor="let produc of productos | async">
+  	
+  		<td>{{produc.imagen}}</td>
+  		<td>{{produc.nombre}}</td>
+  		<td>{{produc.precio}}</td>
+  		<td>{{produc.veces}}</td>
+  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Modificar Producto</button></td>
+  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Eliminar Producto</button></td>
+  		</tr>
+  </tbody>
+  </table>
+  <button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Crear Nuevo Producto</button>
+</div>

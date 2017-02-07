@@ -19,4 +19,14 @@ cliente : FirebaseListObservable<Cliente[]>;
   	this.cliente.push(nuevoCliente);
   }
 
+  promoteProveedor(id) {
+  	const consultaClienteId = this.db.object('/cliente/' + id);
+    consultaClienteId.update({ proveedor: true });
+  }
+
+  promoteCliente(id) {
+  	const consultaClienteId = this.db.object('/cliente/' + id);
+    consultaClienteId.update({ proveedor: false });
+  }
+
 }
