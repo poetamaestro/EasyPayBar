@@ -1,4 +1,5 @@
 export class Cliente{
+	key :number;
 	codigoQR: string;
 	estado: boolean;
 	fecha_Afiliacion: Date;
