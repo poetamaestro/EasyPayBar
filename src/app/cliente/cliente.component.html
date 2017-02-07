@@ -17,10 +17,10 @@
 	  		<td>{{ cli.estado ? 'Activo' : 'Inactivo' }}</td>
 	  		<td [ngSwitch]="cli.proveedor">
 	  			<span *ngSwitchCase="false">
-	  				<button class="btn btn-sm btn-success" (click)="openModalCliente(cli.$key, cli.nombre, cli.proveedor)"><span class="glyphicon glyphicon-plus"></span></button>	
+	  				<button class="btn btn-sm btn-success" (click)="openModalCliente(cli.$key, cli.nombre)"><span class="glyphicon glyphicon-plus"></span></button>	
 	  			</span>
 	  			<span *ngSwitchDefault>
-	  				<button class="btn btn-sm btn-primary" (click)="openModalCliente(cli.$key, cli.nombre, cli.proveedor)"><span class="glyphicon glyphicon-user"></span></button>	
+	  				<button class="btn btn-sm btn-primary" (click)="openModalCliente(cli.$key, cli.nombre)"><span class="glyphicon glyphicon-user"></span></button>	
 	  			</span>
 	  		</td>
 	  	</tr>
@@ -36,32 +36,29 @@
 <!-- Modal -->
 <modal #modalCliente>
 	<modal-header [show-close]="true">
-		<div [ngSwitch]="proveedorCliente">
-			<span *ngSwitchCase="false">
-	  			<h4 class="modal-title">¿Desea Promover a este Cliente a Proveedor?</h4>
-	  		</span>
-			<span *ngSwitchDefault>
-	  			<h4 class="modal-title">¿Desea Promover a este Proveedor a Cliente?</h4>
-	  		</span>
-		</div>
+		<h4 class="modal-title">¿Desea promover a este cliente a proveedor?</h4>	  		
 	</modal-header>
 
 	<modal-body>
-	  	Nombre: {{ nombreCliente }}
+		<div class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-md-4">Id:</label>
+				<div class="col-md-8">
+					<h3>{{ cliente.key }}</h3>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-4">Nombre:</label>
+				<div class="col-md-8">
+					<h3>{{ cliente.nombre }}</h3>
+				</div>
+			</div>
+		</div>
+	  	 
 	</modal-body>
 
 	<modal-footer>
-	  	<div [ngSwitch]="proveedorCliente">
-	  		<span *ngSwitchCase="false">
-	  			<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateToProveedor(idCliente, nombreCliente)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
-	  		</span>
-	  				
-	  		<span *ngSwitchDefault>
-	  			<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateToCliente(idCliente, nombreCliente)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
-	  		</span>
-
-	  	</div>
-	  				
+	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateToProveedor()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>	  				
 	  	<button type="button" class="btn btn-danger" (click)="modal.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
 	  			
 	</modal-footer>

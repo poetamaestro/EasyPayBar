@@ -28,5 +28,4 @@ cliente : FirebaseListObservable<Cliente[]>;
   	const consultaClienteId = this.db.object('/cliente/' + id);
     consultaClienteId.update({ proveedor: false });
   }
-
 }
