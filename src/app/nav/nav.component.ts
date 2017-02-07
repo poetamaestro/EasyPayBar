@@ -19,7 +19,6 @@ export class NavComponent implements OnInit {
   }
   a_logout() {
     this.af.auth.logout();
-    console.log('logged out');
     this.router.navigateByUrl('/menu');
   }
 

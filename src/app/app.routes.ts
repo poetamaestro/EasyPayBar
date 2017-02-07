@@ -5,7 +5,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
-import { MembersComponent } from './members/members.component';
+
 import { AuthGuard } from './auth.service';
 import { SignupComponent } from './signup/signup.component';
 import { EmailComponent } from './email/email.component';
@@ -26,7 +26,7 @@ export const router: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login-email', component: EmailComponent },
   { path: 'cargar', component: CargarMenuComponent },
-  { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
+
   { path:'compras', component: ComprasComponent},
   { path: 'proveedor', component: ProveedorComponent},
   {path: 'recarga', component: RecargaComponent},

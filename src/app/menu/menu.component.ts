@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   name: any;
-  state: string = '';
+
 
   constructor(public af: AngularFire,private router: Router) {
 
