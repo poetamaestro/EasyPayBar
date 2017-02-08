@@ -17,6 +17,7 @@ import {  RecargaComponent } from './recarga/recarga.component';
 import {  CategoriaComponent } from './categoria/categoria.component';
 import {  MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import  { ProductoComponent} from './producto/producto.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
@@ -34,7 +35,8 @@ export const router: Routes = [
   { path: 'proveedor', component: ProveedorComponent },
   { path: 'recarga', component: RecargaComponent },
   { path: 'cliente', component: ClienteComponent},
-  { path: 'categoria', component: CategoriaComponent}
+  { path: 'categoria', component: CategoriaComponent},
+  { path: 'producto', component: ProductoComponent}
 
 ]
 

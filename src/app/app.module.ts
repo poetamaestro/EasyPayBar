@@ -27,6 +27,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { ProductoComponent } from './producto/producto.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
