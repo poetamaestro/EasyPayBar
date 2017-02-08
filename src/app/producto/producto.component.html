@@ -12,16 +12,121 @@
   	</tr>
   </thead>
   <tbody>
-  	<tr *ngFor="let produc of productos | async">
+  	<tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 10, currentPage: p }">
   	
   		<td>{{produc.imagen}}</td>
   		<td>{{produc.nombre}}</td>
   		<td>{{produc.precio}}</td>
   		<td>{{produc.veces}}</td>
-  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Modificar Producto</button></td>
-  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Eliminar Producto</button></td>
+  		
+      <td><button class="btn btn-success btn-sm" (click)="openModalProductoEditar(produc.$key, produc.imagen,produc.nombre, produc.precio, produc.veces )"><span class="glyphicon glyphicon-plus"></span>Modificar Producto</button></td>
+
+  		<td><button class="btn btn-success btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.imagen,produc.nombre, produc.precio, produc.veces )"><span class="glyphicon glyphicon-plus"></span>Eliminar Producto</button></td>
+
   		</tr>
   </tbody>
   </table>
-  <button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Crear Nuevo Producto</button>
+  <button class="btn btn-success btn-sm" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span>Crear Nuevo Producto</button>
+  <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+
+
+<!-- Modal Eliminar -->
+<modal #modalProductoEliminar>
+  <modal-header [show-close]="true">
+      <h4 class="modal-title">¿Desea Eliminar este Producto?</h4>
+  </modal-header>
+
+  <modal-body>
+  Nombre: {{ nombre}}
+  </modal-body>
+
+  <modal-footer>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto(idProducto)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
+      <button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button> 
+  </modal-footer>
+</modal>
+
+<!-- Modal Crear -->
+<modal #modalProductoCrear>
+  <modal-header [show-close]="true">
+      <h4 class="modal-title">Registro De Nuevo Producto</h4>
+  </modal-header>
+
+  <modal-body>
+    <div class="form-group">
+          <label class="col-lg-3 control-label">Descripcion:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtimagen" placeholder="Ingrese la Imagen" [(ngModel)]="producto.imagen">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-lg-3 control-label">Nombre:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtnombre" placeholder="Ingrese el nombre" [(ngModel)]="producto.nombre">
+          </div>
+      </div>
+  <div class="form-group">
+          <label class="col-lg-3 control-label">Precio:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtprecio" placeholder="Ingrese el Precio" [(ngModel)]="producto.precio">
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-lg-3 control-label">Veces:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtveces" placeholder="Ingrese las Veces Compradas" [(ngModel)]="producto.veces">
+          </div>
+      </div>
+    </modal-body>
+
+  <modal-footer>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
+      <button type="button" class="btn btn-danger" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>  
+  </modal-footer>
+</modal>
+
+<!-- Modal Editar -->
+<modal #modalProductoModificar>
+  <modal-header [show-close]="true">
+      <h4 class="modal-title">¿Desea Editar este Producto?</h4>
+  </modal-header>
+
+  <modal-body>
+    <div class="form-group">
+          <label class="col-lg-3 control-label">Imagen:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtimagen" [value]="imagen" placeholder="Ingrese la imagen" />
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-lg-3 control-label">Nombre:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtnombre" [value]="nombre" placeholder="Ingrese el nombre" />
+          </div>
+      </div>
+    <div class="form-group">
+          <label class="col-lg-3 control-label">Precio:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtprecio" [value]="precio" placeholder="Ingrese el precio" />
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label class="col-lg-3 control-label">Veces:</label>
+          <div class="col-lg-6">
+              <input type="text" class="form-control" name="txtveces" [value]="veces" placeholder="Ingrese las veces" />
+          </div>
+      </div>
+
+    </modal-body>
+
+  <modal-footer>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto(idProducto, imagen, nombre, precio, veces)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>     
+      <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>  
+  </modal-footer>
+</modal>

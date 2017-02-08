@@ -10,16 +10,18 @@
   	</tr>
   </thead>
   <tbody>
-  	<tr *ngFor="let cate of categorias | async">
+  	<tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
   		<td>{{cate.descripcion}}</td>
   		<td>{{cate.nombre}}</td>
-  		<td>{{cate.producto}}<button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Agregar Productos</button></td>
+  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
   		<td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
   		<td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
   		</tr>
   </tbody>
   </table>
   <button class="btn btn-success btn-sm" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span>Agregar Nueva Categoria</button>
+  <!-- Pagination -->
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <!-- Modal Eliminar -->
@@ -33,8 +35,10 @@
 	</modal-body>
 
 	<modal-footer>
+    <div class="container">
 	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteCategoria(idCategoria)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>			
 	  	<button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>	
+      </div>
 	</modal-footer>
 </modal>
 
