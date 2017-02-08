@@ -16,7 +16,6 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import {  RecargaComponent } from './recarga/recarga.component';
 import {  CategoriaComponent } from './categoria/categoria.component';
 import {  MenuAdminComponent } from './menu-admin/menu-admin.component';
-
 import { ClienteComponent } from './cliente/cliente.component';
 
 export const router: Routes = [

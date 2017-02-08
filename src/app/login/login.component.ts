@@ -1,8 +1,11 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit ,HostBinding  } from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'angularfire2';
 import { Router } from '@angular/router';
+import { ClienteService } from '../service/cliente.service';
+import { Cliente} from '../typeScript/cliente';
 import { AdminService } from './adm.service';
 import {Admin} from "../typeScript/admin";
+
 
 
 
@@ -10,32 +13,36 @@ import {Admin} from "../typeScript/admin";
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[AdminService]
+
+  providers:[ AdminService]
 })
 export class LoginComponent implements OnInit {
   userFb = {};
   error: any;
   admins :  FirebaseListObservable<Admin[]>;
   contador: number = 0;
+
   constructor(public af: AngularFire,private router: Router, private adminService: AdminService) {
 
     this.af.auth.subscribe(auth => {
       if(auth) {
-
         this.admins.forEach(element => {
-          if(auth.uid == element[this.contador +""].$value){
 
+          if(auth.uid == element[this.contador +""].$value){
             this.router.navigateByUrl('/menu-admin');
           }
-
           this.contador = this.contador+1;
+        });
 
-        }).then(function(){
           this.router.navigateByUrl('/menu');
-        })
+
 
       }
     });
+  }
+
+  getAdmins(): void{
+   this.admins = this.adminService.getAdmins();
   }
 
 
@@ -70,7 +77,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.getAdmins();
   }
 
 }

@@ -15,16 +15,13 @@ import { firebaseConfig } from '../environments/firebase.config';
 import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
-import { MembersComponent } from './members/members.component';
 import { AuthGuard } from './auth.service';
 import { routes } from './app.routes';
 import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { RecargaComponent } from './recarga/recarga.component';
 import { ComprasComponent } from './compras/compras.component';
-
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
-
 import { ClienteComponent } from './cliente/cliente.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ProductoComponent } from './producto/producto.component';
@@ -39,18 +36,13 @@ import { ProductoComponent } from './producto/producto.component';
     LoginComponent,
     EmailComponent,
     SignupComponent,
-    MembersComponent,
     CargarMenuComponent,
     ProveedorComponent,
     RecargaComponent,
     ComprasComponent,
-
     MenuAdminComponent,
-
     ClienteComponent,
-
     CategoriaComponent,
-
     ProductoComponent
 
   ],
