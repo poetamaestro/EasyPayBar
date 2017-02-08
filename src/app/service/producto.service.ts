@@ -19,4 +19,11 @@ producto : FirebaseListObservable<Producto[]>;
   	this.producto.push(nuevoProducto);
   }
 
+deleteProducto(id) {
+  	this.db.object('/proveedor/0/categoria/0/producto/' + id).remove();
+  }
+
+  updateProducto(id,  imagenProd: string, nombreProd : string, precioProd: number, vecesProd: number) {
+  	this.db.object('/proveedor/0/categoria/0/producto/' + id).update({ imagen : imagenProd, nombre : nombreProd, precio : precioProd, veces : vecesProd });
+  }
 }
