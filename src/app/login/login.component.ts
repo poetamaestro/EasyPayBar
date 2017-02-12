@@ -7,8 +7,6 @@ import { AdminService } from './adm.service';
 import {Admin} from "../typeScript/admin";
 
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,8 +19,9 @@ export class LoginComponent implements OnInit {
   error: any;
   admins :  FirebaseListObservable<Admin[]>;
   contador: number = 0;
-
-  constructor(public af: AngularFire,private router: Router, private adminService: AdminService) {
+  clientes : FirebaseListObservable<Cliente[]>;
+  cliente: Cliente = new Cliente();
+  constructor(public af: AngularFire,private router: Router, private adminService: AdminService, private clienteService : ClienteService) {
 
     this.af.auth.subscribe(auth => {
       if(auth) {
@@ -32,6 +31,8 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/menu-admin');
           }
           this.contador = this.contador+1;
+
+
         });
 
           this.router.navigateByUrl('/menu');
