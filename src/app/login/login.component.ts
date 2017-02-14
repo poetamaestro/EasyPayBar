@@ -31,9 +31,10 @@ export class LoginComponent implements OnInit {
     this.af.auth.subscribe(auth => {
 
       if(auth) {
+        console.log(auth.facebook);
         this.clienteService.createCliente( auth.facebook.displayName , auth.uid);
         this.clienteService.addCliente();
-        this.getClientes(auth);
+        console.log(this.getClientes(auth));
         this.admins.forEach(element => {
 
           if(auth.uid == element[this.contador +""].$value){
@@ -52,23 +53,13 @@ export class LoginComponent implements OnInit {
   }
 
   getClientes(auth) : boolean {
-    var registros = 0;
-    this.af.database.list('/cliente', { preserveSnapshot: true})
-      .subscribe(snapshots=>{
-        snapshots.forEach(snapshot => {
-          if(snapshot.val().codigoQR == auth.uid){
-            console.log(registros);
-              registros = registros+1;
-          }
+   
 
+    this.af.database.list('/cliente', { preserveSnapshot: true}).subscribe(snapshots=>{
+        snapshots.forEach(snapshot => {if(snapshot.val().codigoQR == auth.uid){return true;}});
 
-        });
-      });
+    });
 
-      if(registros > 0 ){
-
-        return true;
-      }
 
       return false;
   }
