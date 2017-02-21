@@ -1,34 +1,47 @@
 <app-nav></app-nav>
-<div class="container">
-<h1>{{titulo}}</h1>
-  <table class="table table-hovered">
-  <thead>
-  	<tr>
-  		<th>Nombre</th>
-  		<th>Precio</th>
-  		<th>Veces Compradas</th>
-      <th>Imagen</th>
-  	</tr>
-  </thead>
-  <tbody>
-  	<tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
 
-  		<td>{{ produc.nombre }}</td>
-  		<td>${{ produc.precio }}</td>
-  		<td>{{ produc.veces }}</td>
-      <td><img src="{{produc.imagen}}" class="img-responsive" height="100" width="100"></td>
-  		
-      <td><button class="btn btn-primary btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+<div class="component-container">
+  <div class="page-head">
+    <i class="fa fa-chevron-left fa-3x" id="return" aria-hidden="true" routerLink="/menu-admin"></i>
+    <h1 class="page-title">{{ titulo }}</h1>
+  </div>
+  <div class="page-main">
+    <div class="page-section">
+      <div class="row">
+        <button class="btn btn-success" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span> Crear nuevo producto</button>
+        <table class="table table-hovered">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Veces</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
+            
+              
+              <td>{{produc.nombre}}</td>
+              <td>{{produc.precio}}</td>
+              <td>{{produc.veces}}</td>
+              <td><img src="{{produc.imagen}}" class="img-responsive" height="100" width="100"></td>
+              
+              <td><button class="btn btn-success btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-plus"></span> Modificar Producto</button></td>
 
-  		<td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-remove"></span></button></td>
+              <td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-plus"></span> Eliminar Producto</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Pagination -->
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
 
-  		</tr>
-  </tbody>
-  </table>
-  <button class="btn btn-success btn-sm" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span>Crear Nuevo Producto</button>
-  <!-- Pagination -->
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
+
+
 
 
 <!-- Modal Eliminar -->
