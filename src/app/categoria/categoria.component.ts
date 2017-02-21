@@ -3,6 +3,7 @@ import { Categoria } from './../typeScript/categoria';
 import { CategoriaService } from '../service/categoria.service';
 import { FirebaseListObservable} from 'angularfire2';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria',
