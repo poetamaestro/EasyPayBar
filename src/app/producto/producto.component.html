@@ -4,24 +4,23 @@
   <table class="table table-hovered">
   <thead>
   	<tr>
-  	
-  		<th>Imagen</th>
   		<th>Nombre</th>
   		<th>Precio</th>
-  		<th>Veces</th>
+  		<th>Veces Compradas</th>
+      <th>Imagen</th>
   	</tr>
   </thead>
   <tbody>
-  	<tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 10, currentPage: p }">
-  	
-  		<td>{{produc.imagen}}</td>
-  		<td>{{produc.nombre}}</td>
-  		<td>{{produc.precio}}</td>
-  		<td>{{produc.veces}}</td>
-  		
-      <td><button class="btn btn-success btn-sm" (click)="openModalProductoEditar(produc.$key, produc.imagen,produc.nombre, produc.precio, produc.veces )"><span class="glyphicon glyphicon-plus"></span>Modificar Producto</button></td>
+  	<tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
 
-  		<td><button class="btn btn-success btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.imagen,produc.nombre, produc.precio, produc.veces )"><span class="glyphicon glyphicon-plus"></span>Eliminar Producto</button></td>
+  		<td>{{ produc.nombre }}</td>
+  		<td>${{ produc.precio }}</td>
+  		<td>{{ produc.veces }}</td>
+      <td><img src="{{produc.imagen}}" class="img-responsive" height="100" width="100"></td>
+  		
+      <td><button class="btn btn-primary btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+
+  		<td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-remove"></span></button></td>
 
   		</tr>
   </tbody>
@@ -39,11 +38,11 @@
   </modal-header>
 
   <modal-body>
-  Nombre: {{ nombre}}
+    Nombre: {{ producto.nombre }}
   </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto(idProducto)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
       <button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button> 
   </modal-footer>
 </modal>
@@ -55,20 +54,14 @@
   </modal-header>
 
   <modal-body>
-    <div class="form-group">
-          <label class="col-lg-3 control-label">Descripcion:</label>
-          <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtimagen" placeholder="Ingrese la Imagen" [(ngModel)]="producto.imagen">
-          </div>
-      </div>
-
       <div class="form-group">
           <label class="col-lg-3 control-label">Nombre:</label>
           <div class="col-lg-6">
               <input type="text" class="form-control" name="txtnombre" placeholder="Ingrese el nombre" [(ngModel)]="producto.nombre">
           </div>
       </div>
-  <div class="form-group">
+
+      <div class="form-group">
           <label class="col-lg-3 control-label">Precio:</label>
           <div class="col-lg-6">
               <input type="text" class="form-control" name="txtprecio" placeholder="Ingrese el Precio" [(ngModel)]="producto.precio">
@@ -81,6 +74,14 @@
               <input type="text" class="form-control" name="txtveces" placeholder="Ingrese las Veces Compradas" [(ngModel)]="producto.veces">
           </div>
       </div>
+
+      <div class="form-group">
+          <label class="col-lg-3 control-label">Imagen:</label>
+          <div class="col-lg-6">
+              <input id="file" name="file" type="file" [(ngModel)]="producto.imagen" />
+          </div>
+      </div>
+
     </modal-body>
 
   <modal-footer>
@@ -96,37 +97,46 @@
   </modal-header>
 
   <modal-body>
-    <div class="form-group">
-          <label class="col-lg-3 control-label">Imagen:</label>
-          <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtimagen" [value]="imagen" placeholder="Ingrese la imagen" />
-          </div>
-      </div>
-
       <div class="form-group">
           <label class="col-lg-3 control-label">Nombre:</label>
           <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtnombre" [value]="nombre" placeholder="Ingrese el nombre" />
+              <input type="text" class="form-control" name="txtnombre" [value]="producto.nombre" [(ngModel)]="producto.nombre" placeholder="Ingrese el nombre" />
           </div>
       </div>
     <div class="form-group">
           <label class="col-lg-3 control-label">Precio:</label>
           <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtprecio" [value]="precio" placeholder="Ingrese el precio" />
+              <input type="text" class="form-control" name="txtprecio" [value]="producto.precio" [(ngModel)]="producto.precio" placeholder="Ingrese el precio" />
           </div>
       </div>
 
       <div class="form-group">
           <label class="col-lg-3 control-label">Veces:</label>
           <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtveces" [value]="veces" placeholder="Ingrese las veces" />
+              <input type="text" class="form-control" name="txtveces" [value]="producto.veces" [(ngModel)]="producto.veces" placeholder="Ingrese las veces" />
           </div>
       </div>
 
     </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto(idProducto, imagen, nombre, precio, veces)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>     
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>     
       <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>  
   </modal-footer>
 </modal>
+
+<!--
+ <h2>Upload a File</h2>
+  <form ngNoForm>
+    <input id="file" name="file" type="file" />
+    <button (click)="upload()" type="button">Upload</button>
+    </form>
+    <h2>File Gallery</h2>
+    <div style="overflow:hidden;">
+        <div *ngFor="let img of imageList | async" style="position:relative;width:100px;height:100px;float:left;display:flex;justify-content:center;align-items:center;">
+            <img [src]="img.downloadURL | async" style="max-width:100px;max-height:100px;">
+            <button (click)="delete(img)" style="position:absolute;top:2px;right:2px;">[x]</button>
+        </div>
+    </div>
+
+-->
