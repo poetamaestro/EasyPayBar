@@ -358,8 +358,27 @@ span.label.label-default.col-md-6{
   border-bottom-width: thin;
 }
 
+.page-head .row{
+  max-width: none !important;  
+}
+
 .page-head .page-title{
-  color: #fff
+  color: #fff;
+  display: inline-block;
+}
+
+i#return {
+    margin-right: 5px;
+    padding-right: 15px;
+    border-right-style: solid;
+    border-right-color: rgba(255, 255, 255, 0.50);
+    border-right-width: thin;
+    color: white;
+    cursor: pointer;
+}
+
+i#return:hover {
+    color: lightblue;
 }
 
 .page-main{
@@ -376,6 +395,10 @@ span.label.label-default.col-md-6{
   max-width: none !important;
 }
 
+.page-section > .row > .btn{
+  margin-bottom: 10px;
+  width: initial;
+} 
 /* panel de funcionalidades*/
 .function-panel{
   margin: 5px;
