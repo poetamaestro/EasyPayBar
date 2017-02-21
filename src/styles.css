@@ -359,10 +359,4 @@ span.label.label-default.col-md-6{
 }
 
 .cliente-container {
-  background: white;
-  border: solid 1px;
-}
-
-.cliente-container div.col-md-6{
-  border-style: none;
-}
+  background: white;}

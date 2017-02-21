@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     this.af.auth.subscribe(auth => {
 
       if(auth) {
+
         this.clienteService.createCliente( auth.facebook.displayName , auth.uid);
         this.clienteService.addCliente();
         console.log(this.getClientes(auth));
@@ -47,6 +48,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+
+
   getAdmins(): void{
    this.admins = this.adminService.getAdmins();
   }
@@ -54,6 +58,7 @@ export class LoginComponent implements OnInit {
   getClientes(auth) : boolean {
 
     this.af.database.list('/cliente', { preserveSnapshot: true}).subscribe(snapshots=>{
+      console.log(auth.uid)
         snapshots.forEach(snapshot => {if(snapshot.val().codigoQR == auth.uid){
             return true;
           }
@@ -96,14 +101,10 @@ export class LoginComponent implements OnInit {
   }
 
 
-
-
-
-
-
   ngOnInit() {
     this.getAdmins();
 
   }
+
 
 }
