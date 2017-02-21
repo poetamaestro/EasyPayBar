@@ -20,25 +20,25 @@ export class CategoriaComponent implements OnInit {
   @ViewChild('modalCategoriaCrear')
   modalCrear: ModalComponent;
 
-	titulo= "Registro de Categorias del Proveedor";
+  titulo= "Registro de Categorias del Proveedor";
   idCategoria = this.getIdCategoria();
   descripcion = this.getDescripcion();
   nombre = this.getNombre();
   categoria : Categoria = new Categoria();
-	categorias : FirebaseListObservable<Categoria[]>;
+  categorias : FirebaseListObservable<Categoria[]>;
 
   constructor(private categoriaServicio: CategoriaService) {   }
 
-getCategorias(): void{
-  	this.categorias = this.categoriaServicio.getCategorias();
+  getCategorias(): void{
+    this.categorias = this.categoriaServicio.getCategorias();
   }
 
-updateToProduct(): void{
-	alert("Ingrese el producto de su categoria");
-}
+  updateToProduct(): void{
+    alert("Ingrese el producto de su categoria");
+  }
 
   ngOnInit() {
-  	this.getCategorias();
+    this.getCategorias();
   }
 
   getIdCategoria() {
@@ -73,7 +73,7 @@ updateToProduct(): void{
     this.categoriaServicio.deleteCategoria(id);
   }
 
-  updateCategoria(id, descripcion: string, nombre : string) {     
+  updateCategoria(id, descripcion: string, nombre : string) {
     this.categoriaServicio.updateCategoria(id, descripcion, nombre);
   }
 

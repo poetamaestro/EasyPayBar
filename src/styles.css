@@ -373,7 +373,7 @@ span.label.label-default.col-md-6{
 }
 
 .page-section .row{
-  max-width: none !important;  
+  max-width: none !important;
 }
 
 /* panel de funcionalidades*/
@@ -392,7 +392,7 @@ span.label.label-default.col-md-6{
 }
 
 .function-panel .function-body{
-  padding: 5px;  
+  padding: 5px;
 }
 
 .function-body .row .col h2{

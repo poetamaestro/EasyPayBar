@@ -1,23 +1,23 @@
 <app-nav></app-nav>
 <div class="container">
-<h1>{{titulo}}</h1>
+  <h1>{{titulo}}</h1>
   <table class="table table-hovered">
-  <thead>
-  	<tr>
-  		<th>Descripción</th>
-  		<th>Nombre</th>
-  		<th>Producto</th>
-  	</tr>
-  </thead>
-  <tbody>
-  	<tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
-  		<td>{{cate.descripcion}}</td>
-  		<td>{{cate.nombre}}</td>
-  		<td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
-  		<td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
-  		<td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
-  		</tr>
-  </tbody>
+    <thead>
+    <tr>
+      <th>Descripción</th>
+      <th>Nombre</th>
+      <th>Producto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
+      <td>{{cate.descripcion}}</td>
+      <td>{{cate.nombre}}</td>
+      <td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
+      <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
+      <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
+    </tr>
+    </tbody>
   </table>
   <button class="btn btn-success btn-sm" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span>Agregar Nueva Categoria</button>
   <!-- Pagination -->
@@ -26,74 +26,74 @@
 
 <!-- Modal Eliminar -->
 <modal #modalCategoriaEliminar>
-	<modal-header [show-close]="true">
-	  	<h4 class="modal-title">¿Desea Eliminar esta Categoria?</h4>
-	</modal-header>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">¿Desea Eliminar esta Categoria?</h4>
+  </modal-header>
 
-	<modal-body>
-		Descripción: {{ descripcion }}
-	</modal-body>
+  <modal-body>
+    Descripción: {{ descripcion }}
+  </modal-body>
 
-	<modal-footer>
+  <modal-footer>
     <div class="container">
-	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteCategoria(idCategoria)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>			
-	  	<button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>	
-      </div>
-	</modal-footer>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteCategoria(idCategoria)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+    </div>
+  </modal-footer>
 </modal>
 
 <!-- Modal Crear -->
 <modal #modalCategoriaCrear>
-	<modal-header [show-close]="true">
-	  	<h4 class="modal-title">Registro de una nueva Categoria</h4>
-	</modal-header>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Registro de una nueva Categoria</h4>
+  </modal-header>
 
-	<modal-body>
-		<div class="form-group">
-        	<label class="col-lg-3 control-label">Descripcion:</label>
-        	<div class="col-lg-6">
-            	<input type="text" class="form-control" name="txtdescripcion" placeholder="Ingrese la descripcion" [(ngModel)]="categoria.descripcion">
-        	</div>
-    	</div>
+  <modal-body>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Descripcion:</label>
+      <div class="col-lg-6">
+        <input type="text" class="form-control" name="txtdescripcion" placeholder="Ingrese la descripcion" [(ngModel)]="categoria.descripcion">
+      </div>
+    </div>
 
-    	<div class="form-group">
-        	<label class="col-lg-3 control-label">Nombre:</label>
-        	<div class="col-lg-6">
-            	<input type="text" class="form-control" name="txtnombre" placeholder="Ingrese el nombre" [(ngModel)]="categoria.nombre">
-        	</div>
-    	</div>
-    </modal-body>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Nombre:</label>
+      <div class="col-lg-6">
+        <input type="text" class="form-control" name="txtnombre" placeholder="Ingrese el nombre" [(ngModel)]="categoria.nombre">
+      </div>
+    </div>
+  </modal-body>
 
-	<modal-footer>
-	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addCategoria()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>			
-	  	<button type="button" class="btn btn-danger" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>	
-	</modal-footer>
+  <modal-footer>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addCategoria()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+  </modal-footer>
 </modal>
 
 <!-- Modal Editar -->
 <modal #modalCategoriaModificar>
-	<modal-header [show-close]="true">
-	  	<h4 class="modal-title">¿Desea Editar esta Categoria?</h4>
-	</modal-header>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">¿Desea Editar esta Categoria?</h4>
+  </modal-header>
 
-	<modal-body>
-		<div class="form-group">
-        	<label class="col-lg-3 control-label">Descripcion:</label>
-        	<div class="col-lg-6">
-            	<input type="text" class="form-control" name="txtdescripcion" [value]="descripcion" placeholder="Ingrese la descripcion" />
-        	</div>
-    	</div>
+  <modal-body>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Descripcion:</label>
+      <div class="col-lg-6">
+        <input type="text" class="form-control" name="txtdescripcion" [value]="descripcion" placeholder="Ingrese la descripcion" />
+      </div>
+    </div>
 
-    	<div class="form-group">
-        	<label class="col-lg-3 control-label">Nombre:</label>
-        	<div class="col-lg-6">
-            	<input type="text" class="form-control" name="txtnombre" [value]="nombre" placeholder="Ingrese el nombre" />
-        	</div>
-    	</div>
-    </modal-body>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Nombre:</label>
+      <div class="col-lg-6">
+        <input type="text" class="form-control" name="txtnombre" [value]="nombre" placeholder="Ingrese el nombre" />
+      </div>
+    </div>
+  </modal-body>
 
-	<modal-footer>
-	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateCategoria(idCategoria, descripcion, nombre)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>			
-	  	<button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>	
-	</modal-footer>
+  <modal-footer>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateCategoria(idCategoria, descripcion, nombre)"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+  </modal-footer>
 </modal>
