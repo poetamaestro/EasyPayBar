@@ -23,10 +23,10 @@
 							<td>{{ cli.estado ? 'Activo' : 'Inactivo' }}</td>
 							<td [ngSwitch]="cli.proveedor">
 								<span *ngSwitchCase="false">
-									<button class="btn btn-sm btn-success" (click)="openModalCliente(cli.$key, cli.nombre)"><span class="glyphicon glyphicon-plus"></span></button>	
+									<button class="btn btn-sm btn-success" (click)="openModalCliente(cli.$key, cli.nombre, cli.codigoQR)"><span class="glyphicon glyphicon-plus"></span></button>	
 								</span>
 								<span *ngSwitchDefault>
-									<button class="btn btn-sm btn-primary" (click)="openModalCliente(cli.$key, cli.nombre)"><span class="glyphicon glyphicon-user"></span></button>	
+									<button class="btn btn-sm btn-primary" (click)="openModalCliente(cli.$key, cli.nombre, cli.codigoQR)"><span class="glyphicon glyphicon-user"></span></button>	
 								</span>
 							</td>
 						</tr>

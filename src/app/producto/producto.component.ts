@@ -14,9 +14,6 @@ interface Image {
   $key?: string;
 }
 
-
-
-
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
