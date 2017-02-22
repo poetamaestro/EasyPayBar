@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
   }
   a_logout() {
     this.af.auth.logout();
-    
+
   }
 
   ngOnInit() {
