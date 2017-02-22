@@ -7,6 +7,7 @@ export class Cliente{
 	fecha_Nacimiento: Date;
 	nombre: string;
 	proveedor: boolean;
+  admin: boolean;
 
 	constructor(values: Object = {}) {
 		Object.assign(this, values)

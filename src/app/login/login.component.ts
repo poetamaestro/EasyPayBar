@@ -6,7 +6,7 @@ import { Cliente } from '../typeScript/cliente';
 import { AdminService } from './adm.service';
 import {Admin} from "../typeScript/admin";
 import auth = firebase.auth;
-import {isNumeric} from "rxjs/util/isNumeric";
+import {Subject} from 'rxjs/Subject';
 
 
 
@@ -28,29 +28,52 @@ export class LoginComponent implements OnInit {
 
   constructor(public af: AngularFire,private router: Router, private adminService: AdminService ,private clienteService: ClienteService) {
 
+
+
     this.af.auth.subscribe(auth => {
 
       if(auth) {
-
-        this.clienteService.createCliente( auth.facebook.displayName , auth.uid);
-        this.clienteService.addCliente();
-        console.log(this.getClientes(auth));
-        this.admins.forEach(element => {
-
-          if(auth.uid == element[this.contador +""].$value){
-            this.router.navigateByUrl('/menu-admin');
-          }
-          this.contador = this.contador+1;
-
-        });
-          this.router.navigateByUrl('/menu');
+        this.filterAdmin(af,auth);
       }
     });
   }
 
 
 
+  filterAdmin(af , auth){
+    const subject = new Subject();
+    const queryObservable = af.database.list('/cliente', {
+      query: {
+        orderByChild: 'codigoQR',
+        equalTo: auth.uid
+      }
+    });
 
+// subscribe to changes
+    queryObservable.subscribe(queriedItems => {
+      console.log(queriedItems.length);
+      if(queriedItems.length > 0){
+        console.log(queriedItems[0].admin);
+        if(queriedItems[0].admin){
+          this.router.navigateByUrl('/menu-admin');
+        }else{
+          this.router.navigateByUrl('/menu');
+        }
+      }else{
+        this.registrarCliente(auth);
+        this.router.navigateByUrl('/menu');
+      }
+
+    });
+
+
+  }
+
+  registrarCliente(auth): void{
+    console.log("registrar");
+    this.clienteService.createCliente( auth.facebook.displayName , auth.uid);
+    this.clienteService.addCliente();
+  }
   getAdmins(): void{
    this.admins = this.adminService.getAdmins();
   }
@@ -82,7 +105,7 @@ export class LoginComponent implements OnInit {
           if(user) {
             // user logged in
               this.userFb = user;
-              console.log(user);
+
 
           }
           else {

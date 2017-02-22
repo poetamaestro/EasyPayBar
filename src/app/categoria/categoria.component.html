@@ -1,29 +1,4 @@
 <app-nav></app-nav>
-<<<<<<< HEAD
-<div class="container">
-  <h1>{{titulo}}</h1>
-  <table class="table table-hovered">
-    <thead>
-    <tr>
-      <th>Descripción</th>
-      <th>Nombre</th>
-      <th>Producto</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
-      <td>{{cate.descripcion}}</td>
-      <td>{{cate.nombre}}</td>
-      <td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
-      <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
-      <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
-    </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-success btn-sm" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span>Agregar Nueva Categoria</button>
-  <!-- Pagination -->
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-=======
 <div class="component-container">
   <div class="page-head">
     <i class="fa fa-chevron-left fa-3x" id="return" aria-hidden="true" routerLink="/menu-admin"></i>
@@ -35,20 +10,20 @@
         <button class="btn btn-success btn-md" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span> Agregar nueva categoría</button>
         <table class="table table-hovered">
           <thead>
-            <tr>
-              <th>Descripción</th>
-              <th>Nombre</th>
-              <th>Producto</th>
-            </tr>
+          <tr>
+            <th>Descripción</th>
+            <th>Nombre</th>
+            <th>Producto</th>
+          </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
-              <td>{{cate.descripcion}}</td>
-              <td>{{cate.nombre}}</td>
-              <td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
-              <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
-              <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
-            </tr>
+          <tr *ngFor="let cate of categorias | async | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{cate.descripcion}}</td>
+            <td>{{cate.nombre}}</td>
+            <td><button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span>Ver Productos</button></td>
+            <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEliminar(cate.$key, cate.descripcion)"><span class="glyphicon glyphicon-plus"></span>Eliminar Categoria</button></td>
+            <td><button class="btn btn-success btn-sm" (click)="openModalCategoriaEditar(cate.$key, cate.descripcion, cate.nombre)"><span class="glyphicon glyphicon-plus"></span>Modificar Categoria</button></td>
+          </tr>
           </tbody>
         </table>
         <!-- Pagination -->
@@ -56,7 +31,6 @@
       </div>
     </div>
   </div>
->>>>>>> origin/master
 </div>
 
 <!-- Modal Eliminar -->

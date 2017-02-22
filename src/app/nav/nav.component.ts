@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
   user : any
   pictureUrl : any;
   isLogin : boolean = false;
- 
+
   constructor(public af: AngularFire,private router: Router) {
 
     console.log(router.url);
@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
   }
   a_logout() {
     this.af.auth.logout();
-    this.router.navigateByUrl('/menu');
+    
   }
 
   ngOnInit() {

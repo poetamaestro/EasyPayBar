@@ -12,24 +12,26 @@
         <table class="table table-hovered">
           <thead>
             <tr>
-              <th>Imagen</th>
               <th>Nombre</th>
               <th>Precio</th>
-              <th>Veces</th>
+              <th>Veces Compradas</th>
+              <th>Imagen</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
           <tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
-            
-              
-              <td>{{produc.nombre}}</td>
-              <td>{{produc.precio}}</td>
-              <td>{{produc.veces}}</td>
-              <td><img src="{{produc.imagen}}" class="img-responsive" height="100" width="100"></td>
-              
-              <td><button class="btn btn-success btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-plus"></span> Modificar Producto</button></td>
 
-              <td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-plus"></span> Eliminar Producto</button></td>
+
+              <td class="text-center">{{produc.nombre}}</td>
+              <td class="text-center">{{produc.precio}}</td>
+              <td class="text-center">{{produc.veces}}</td>
+              <td class="text-center"><img src="{{produc.imagen}}" class="img-rounded" alt="Cinque Terre" ></td>
+
+              <td><button class="btn btn-primary btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-pencil"></span> </button></td>
+
+              <td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-remove"></span> </button></td>
             </tr>
           </tbody>
         </table>
@@ -55,8 +57,8 @@
   </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
-      <button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button> 
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
   </modal-footer>
 </modal>
 
@@ -98,8 +100,8 @@
     </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>      
-      <button type="button" class="btn btn-danger" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>  
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
   </modal-footer>
 </modal>
 
@@ -133,8 +135,8 @@
     </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>     
-      <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>  
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
   </modal-footer>
 </modal>
 
