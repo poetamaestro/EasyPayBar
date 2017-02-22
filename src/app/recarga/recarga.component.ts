@@ -3,9 +3,9 @@ import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'a
 import { Router } from '@angular/router';
 import { ClienteService } from '../service/cliente.service';
 import { Cliente } from '../typeScript/cliente';
-
 import auth = firebase.auth;
 import {Subject} from 'rxjs/Subject';
+
 @Component({
   selector: 'app-recarga',
   templateUrl: './recarga.component.html',
@@ -13,12 +13,12 @@ import {Subject} from 'rxjs/Subject';
   providers:[ ClienteService]
 })
 export class RecargaComponent implements OnInit {
+
   cliente: Cliente = new Cliente();
   public af: AngularFire;
-  constructor() {
 
+  constructor() { }
 
-  }
   buscarCliente(nombre:string){
     const subject = new Subject();
     const queryObservable = this.af.database.list('/cliente', {
@@ -35,6 +35,7 @@ export class RecargaComponent implements OnInit {
     });
     subject.next('large');
   }
+  
   ngOnInit() {
   }
 

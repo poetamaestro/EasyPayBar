@@ -1,5 +1,4 @@
 export class Cliente{
-
 	key :number;
 	codigoQR: string;
 	estado: boolean;
@@ -7,7 +6,7 @@ export class Cliente{
 	fecha_Nacimiento: Date;
 	nombre: string;
 	proveedor: boolean;
-  admin: boolean;
+  	admin: boolean;
 
 	constructor(values: Object = {}) {
 		Object.assign(this, values)
