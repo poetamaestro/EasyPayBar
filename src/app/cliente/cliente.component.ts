@@ -16,9 +16,13 @@ export class ClienteComponent implements OnInit {
   @ViewChild('modalCliente')
   modal: ModalComponent;
 
+  @ViewChild('modalMensaje')
+  modalMensaje: ModalComponent;
+
   titulo = 'Registro de Clientes';
   clientes : FirebaseListObservable<Cliente[]>;
   cliente: Cliente = new Cliente();
+  mensaje = 'Este cliente ya ha sido promovido a Proveedor';
 
   constructor(private clienteServicio: ClienteService, private proveedorServicio: ProveedorService) { }
 

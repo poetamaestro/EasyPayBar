@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Proveedor } from './../typeScript/proveedor';
 import { Categoria } from './../typeScript/categoria';
 import { Afiliado } from './../typeScript/afiliado';
@@ -16,7 +16,7 @@ export class ProveedorService {
 
   createProveedor(nom: string, codQR: string) : void {
     this.proveedor.codigoQR = codQR;
-    this.proveedor.nombre = nom; 
+    this.proveedor.nombre = nom;
   }
 
   getProveedores(): FirebaseListObservable<Proveedor[]>{

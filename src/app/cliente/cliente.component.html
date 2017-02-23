@@ -71,3 +71,23 @@
 	</modal-footer>
 </modal>
 
+<modal #modalMensaje>
+	<modal-header [show-close]="true">
+		<h4 class="modal-title">Mensaje</h4>	  		
+	</modal-header>
+
+	<modal-body>
+		<div class="form-horizontal">
+			<div class="form-group">
+				<h3>{{ mensaje }}</h3>
+			</div>
+		</div>
+	  	 
+	</modal-body>
+
+	<modal-footer>	  				
+	  	<button type="button" class="btn btn-danger" (click)="modalMensaje.close()"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+	  			
+	</modal-footer>
+</modal>
+

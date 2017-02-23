@@ -15,8 +15,7 @@
         <li class="nav-item" ><a routerLink="/compras">Compras</a></li>
         <li class="nav-item" ><a routerLink="/cliente">Cliente</a></li>
         <li class="nav-item" ><a routerLink="/proveedor">Proveedores</a></li>
-        <li class="nav-item" ><a routerLink="/producto">Producto</a></li>
-        <li class="nav-item" ><a routerLink="/categoria">Categoria</a></li>
+        <li class="nav-item" ><a [routerLink]="['/proveedor', id, 'categoria']">Categoria</a></li>
         <li class="nav-item" ><a href="" routerLink="/cargar" >Cargar Menu</a></li>
       </ul>
 
