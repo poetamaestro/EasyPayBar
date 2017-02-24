@@ -3,7 +3,7 @@ import { Producto } from './../typeScript/producto';
 import { ProductoService } from '../service/producto.service';
 import { AngularFire, FirebaseListObservable} from 'angularfire2';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 
@@ -26,6 +26,9 @@ export class ProductoComponent implements OnInit {
   storageref;
   storage;
   key;
+  private idPro;
+  private idCat;
+  private sub: any;
 
   @ViewChild('modalProductoEliminar')
   modalEliminar: ModalComponent;
@@ -40,34 +43,22 @@ export class ProductoComponent implements OnInit {
   producto : Producto = new Producto();
   productos : FirebaseListObservable<Producto[]>;
 
-  constructor(private productoServicio: ProductoService, public af: AngularFire) { 
+  constructor(private productoServicio: ProductoService, public af: AngularFire, private route: ActivatedRoute) { 
     this.storage = firebase.storage().ref();
   }
 
-  getProductos(): void{
-  	this.productos = this.productoServicio.getProductos();
-  }
-
   ngOnInit() {
-  	this.getProductos();
-    //this.ngOnChanges();
+    this.sub = this.route.params.subscribe(params => {
+       this.idPro = params['id'];
+       this.idCat = params['idC'];
+    });
+
+    this.getProductos();
   }
 
-  /*ngOnChanges() {
-        console.log("new values for folder");
-        let storage = firebase.storage();
-        
-        this.fileList = this.af.database.list(`productos/images`);
-        console.log("Rendering all images in ",`productos/images`)
-        this.imageList = this.fileList.map( itemList =>
-            itemList.map( item => {
-                var pathReference = storage.ref(item.path);
-                let result = {$key: item.$key, downloadURL: pathReference.getDownloadURL(), path: item.path, filename: item.filename};
-                console.log(result);
-                return result;
-            })
-        );
-    }*/
+  getProductos(): void {
+    this.productos = this.productoServicio.getProductos(this.idPro, this.idCat);
+  }
 
   addProducto() {
     // Create a root reference
@@ -80,7 +71,8 @@ export class ProductoComponent implements OnInit {
       var iRef = storageRef.child(path);
       var pathReference = storage.ref(path);
       iRef.put(selectedFile).then((snapshot) => {
-        pathReference.getDownloadURL().then(url => this.productoServicio.addProducto(url, this.producto));
+        pathReference.getDownloadURL().then(url => this.productoServicio.
+          addProducto(this.idPro, this.idCat, url, this.producto));
       });
     }
   }
@@ -98,11 +90,11 @@ export class ProductoComponent implements OnInit {
   }
 
   updateProducto() {    
-    this.productoServicio.updateProducto(this.key, this.producto);
+    this.productoServicio.updateProducto(this.idPro, this.idCat, this.key, this.producto);
   }
 
   deleteProducto() {
-    this.productoServicio.deleteProducto(this.key);
+    this.productoServicio.deleteProducto(this.idPro, this.idCat, this.key);
   }
 
   openModalProductoEliminar(id, nombre : string, precio: number, veces: number) {
