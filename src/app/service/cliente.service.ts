@@ -5,18 +5,18 @@ import { Cliente } from './../typeScript/cliente';
 @Injectable()
 export class ClienteService {
 
-clientes : FirebaseListObservable<Cliente[]>;
-cliente : Cliente = new Cliente();
+  clientes : FirebaseListObservable<Cliente[]>;
+  cliente : Cliente = new Cliente();
+
   constructor(private db: AngularFireDatabase) {
   	this.clientes = db.list('/cliente');
   }
 
-  getClientes(): FirebaseListObservable<Cliente[]>{
+  getClientes(): FirebaseListObservable<Cliente[]> {
   	return this.db.list('/cliente');
   }
 
-  addCliente(){
-
+  addCliente() {
   	this.clientes.push(this.cliente);
   }
 
@@ -30,16 +30,17 @@ cliente : Cliente = new Cliente();
     consultaClienteId.update({ proveedor: false });
   }
 
-  createCliente(nom: string, key : string) : void{
+  createCliente(nom: string, key : string) : void {
     this.cliente.codigoQR = key;
     this.cliente.nombre = nom;
     this.cliente.estado = true;
     this.cliente.proveedor = false;
+<<<<<<< HEAD
     this.cliente.admin = false;
 
 
+=======
+>>>>>>> origin/master
   }
-
-
 
 }

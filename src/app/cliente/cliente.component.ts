@@ -16,9 +16,13 @@ export class ClienteComponent implements OnInit {
   @ViewChild('modalCliente')
   modal: ModalComponent;
 
+  @ViewChild('modalMensaje')
+  modalMensaje: ModalComponent;
+
   titulo = 'Registro de Clientes';
   clientes : FirebaseListObservable<Cliente[]>;
   cliente: Cliente = new Cliente();
+  mensaje = 'Este cliente ya ha sido promovido a Proveedor';
 
   constructor(private clienteServicio: ClienteService, private proveedorServicio: ProveedorService) { }
 
@@ -30,15 +34,16 @@ export class ClienteComponent implements OnInit {
     this.getClientes();
   }
 
-  updateToProveedor(): void{
+  updateToProveedor(): void {
     this.clienteServicio.promoteProveedor(this.cliente.key);
-    this.proveedorServicio.createProveedor(this.cliente.nombre);
+    this.proveedorServicio.createProveedor(this.cliente.nombre, this.cliente.codigoQR);
     this.proveedorServicio.addProveedor();
   }
 
-  openModalCliente(id: number, nom: string ) {
+  openModalCliente(id: number, nom: string, codQR: string) {
     this.cliente.key = id;
     this.cliente.nombre = nom;
+    this.cliente.codigoQR = codQR;
     this.modal.open();
   }
 

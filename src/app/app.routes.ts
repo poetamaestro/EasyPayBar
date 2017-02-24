@@ -13,11 +13,11 @@ import { MenuComponent } from './menu/menu.component';
 import { CargarMenuComponent } from './cargar-menu/cargar-menu.component';
 import { ComprasComponent} from './compras/compras.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
-import {  RecargaComponent } from './recarga/recarga.component';
-import {  CategoriaComponent } from './categoria/categoria.component';
-import {  MenuAdminComponent } from './menu-admin/menu-admin.component';
+import { RecargaComponent } from './recarga/recarga.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ClienteComponent } from './cliente/cliente.component';
-import  { ProductoComponent} from './producto/producto.component';
+import { ProductoComponent} from './producto/producto.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
@@ -29,14 +29,15 @@ export const router: Routes = [
 
   { path:'compras', component: ComprasComponent},
   { path: 'proveedor', component: ProveedorComponent},
-  {path: 'recarga', component: RecargaComponent},
+  { path: 'recarga', component: RecargaComponent},
   { path: 'menu-admin', component: MenuAdminComponent , canActivate: [AuthGuard]  },
   { path:'compras', component: ComprasComponent },
   { path: 'proveedor', component: ProveedorComponent },
   { path: 'recarga', component: RecargaComponent },
   { path: 'cliente', component: ClienteComponent},
-  { path: 'categoria', component: CategoriaComponent},
-  { path: 'producto', component: ProductoComponent}
+  { path: 'proveedor/:id/categoria', component: CategoriaComponent},
+  { path: 'producto', component: ProductoComponent},
+  { path: 'proveedor/:id/categoria/:idC/producto', component: ProductoComponent}
 
 ]
 
