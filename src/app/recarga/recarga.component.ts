@@ -16,7 +16,7 @@ export class RecargaComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
   public af: AngularFire;
-
+  titulo= "Registro de Credito";
   constructor() { }
 
   buscarCliente(nombre:string){
@@ -35,7 +35,7 @@ export class RecargaComponent implements OnInit {
     });
     subject.next('large');
   }
-  
+
   ngOnInit() {
   }
 

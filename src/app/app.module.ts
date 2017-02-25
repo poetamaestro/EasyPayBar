@@ -29,6 +29,9 @@ import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ProductoComponent } from './producto/producto.component';
+import { NavProveedorComponent } from './nav-proveedor/nav-proveedor.component';
+import { MenuProveedorComponent } from './menu-proveedor/menu-proveedor.component';
+import { NavConsumidorComponent } from './nav-consumidor/nav-consumidor.component';
 
 
 
@@ -50,7 +53,13 @@ import { ProductoComponent } from './producto/producto.component';
     CategoriaComponent,
     ProductoComponent,
     
-    CollapseDirective
+    CollapseDirective,
+    
+    NavProveedorComponent,
+    
+    MenuProveedorComponent,
+    
+    NavConsumidorComponent
   ],
   imports: [
     BrowserModule,

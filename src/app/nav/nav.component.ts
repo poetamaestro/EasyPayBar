@@ -19,13 +19,13 @@ export class NavComponent implements OnInit {
 
   constructor(public af: AngularFire,private router: Router) {
 
-    console.log(router.url);
+
 
     if(router.url == '/login') {
       this.isLogin = true;
     }
 
-    console.log(this.isLogin);
+
 
     this.af.auth.subscribe(auth => {
       if(auth) {

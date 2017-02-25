@@ -35,12 +35,10 @@ export class ClienteService {
     this.cliente.nombre = nom;
     this.cliente.estado = true;
     this.cliente.proveedor = false;
-<<<<<<< HEAD
+
     this.cliente.admin = false;
 
 
-=======
->>>>>>> origin/master
   }
 
 }

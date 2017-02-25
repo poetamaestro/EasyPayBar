@@ -56,7 +56,10 @@ export class LoginComponent implements OnInit {
         console.log(queriedItems[0].admin);
         if(queriedItems[0].admin){
           this.router.navigateByUrl('/menu-admin');
-        }else{
+        }else if(queriedItems[0].proveedor){
+          this.router.navigateByUrl('/menu-proveedor');
+        }
+        else{
           this.router.navigateByUrl('/menu');
         }
       }else{

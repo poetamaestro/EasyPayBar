@@ -18,9 +18,10 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ProductoComponent} from './producto/producto.component';
+import {MenuProveedorComponent} from './menu-proveedor/menu-proveedor.component';
 
 export const router: Routes = [
-  { path: '', redirectTo: 'menu', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -37,7 +38,8 @@ export const router: Routes = [
   { path: 'cliente', component: ClienteComponent},
   { path: 'proveedor/:id/categoria', component: CategoriaComponent},
   { path: 'producto', component: ProductoComponent},
-  { path: 'proveedor/:id/categoria/:idC/producto', component: ProductoComponent}
+  { path: 'proveedor/:id/categoria/:idC/producto', component: ProductoComponent},
+  { path: 'menu-proveedor', component: MenuProveedorComponent}
 
 ]
 
