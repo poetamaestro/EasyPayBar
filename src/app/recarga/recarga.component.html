@@ -10,21 +10,33 @@
     <div class="page-section">
       <div class="row">
        <div class="col-md-6">
-         <div class="form-group" style="padding-top: 5%">
-         <input type="text"   class="form-control col-md-4" placeholder="Nombre del Cliente">
-         </div>
-         <ul class="list-group" style="padding-top: 5%">
-           <li class="list-group-item">Cras justo odio</li>
+         <div class="input-group" style="padding-top: 5%">
+           <input type="text" class="form-control text-primary"  [value]="nombre" [(ngModel)]="nombre"  placeholder="Search for...">
+           <span class="input-group-btn">
+              <button class="btn btn-default"  (click)="buscarCliente()"  type="button">Go!</button>
+            </span>
+         </div><!-- /input-group -->
+
+         <ul class="list-group" style="padding-top:  5%; margin-left: 0%;">
+           <li class="list-group-item " *ngFor="let item of clientes | async">
+
+              <button class="btn btn-default" (click)="setCliente(item)" type="button">  {{ item.nombre }}</button>
 
          </ul>
        </div>
         <div class="col-md-6">
           <ul class="list-group" style="padding-top: 5%">
-              <li class="list-group-item">Nombre:</li>
-            <li class="list-group-item">Apellido</li>
-            <li class="list-group-item">Estado</li>
-            <li class="list-group-item">Saldo Actual</li>
-            <li class="list-group-item">Gatos</li>
+              <li class="list-group-item"><strong>Nombre:</strong> &nbsp;&nbsp; <kbd>{{cliente.nombre}}</kbd></li>
+            <li class="list-group-item"><strong>Saldo Actual:</strong> &nbsp;&nbsp; <kbd>{{cliente.saldo}}</kbd></li>
+            <li class="list-group-item"><strong>Estado:</strong>&nbsp;&nbsp; <kbd>{{cliente.estado ? 'Activo' : 'Inactivo'}}</kbd></li>
+            <li class="list-group-item"><strong>Saldo a Recargar </strong> &nbsp;&nbsp; &nbsp;&nbsp;
+
+              <label class="radio-inline"><input type="radio" name="optradio" value="5" [(ngModel)]="radioValue" ><h5>5$</h5></label>
+              <label class="radio-inline"><input type="radio" name="optradio" value="10"  [(ngModel)]="radioValue"  ><h5>10$</h5></label>
+              <label class="radio-inline"><input type="radio" name="optradio" value="15" [(ngModel)]="radioValue"  ><h5>20$</h5></label>
+
+            </li>
+            <li class="list-group-item"><button class="btn btn-primary" (click)="recargar()" type="button"> Recargar </button></li>
           </ul>
         </div>
       </div>

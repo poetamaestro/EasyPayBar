@@ -24,6 +24,10 @@ export class ClienteService {
   	const consultaClienteId = this.db.object('/cliente/' + id);
     consultaClienteId.update({ proveedor: true });
   }
+  recargarSaldo(id,saldo:number) {
+    const consultaClienteId = this.db.object('/cliente/' + id);
+    consultaClienteId.update({ saldo: saldo });
+  }
 
   promoteCliente(id) {
   	const consultaClienteId = this.db.object('/cliente/' + id);
