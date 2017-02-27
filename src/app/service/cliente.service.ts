@@ -39,7 +39,6 @@ export class ClienteService {
     this.cliente.nombre = nom;
     this.cliente.estado = true;
     this.cliente.proveedor = false;
-
     this.cliente.admin = false;
 
 

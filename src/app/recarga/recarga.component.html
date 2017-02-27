@@ -33,10 +33,10 @@
 
               <label class="radio-inline"><input type="radio" name="optradio" value="5" [(ngModel)]="radioValue" ><h5>5$</h5></label>
               <label class="radio-inline"><input type="radio" name="optradio" value="10"  [(ngModel)]="radioValue"  ><h5>10$</h5></label>
-              <label class="radio-inline"><input type="radio" name="optradio" value="15" [(ngModel)]="radioValue"  ><h5>20$</h5></label>
+              <label class="radio-inline"><input type="radio" name="optradio" value="20" [(ngModel)]="radioValue"  ><h5>20$</h5></label>
 
             </li>
-            <li class="list-group-item"><button class="btn btn-primary" (click)="recargar()" type="button"> Recargar </button></li>
+            <li class="list-group-item"><button class="btn btn-primary" (click)="modalVerificar.open()" type="button"> Recargar </button></li>
           </ul>
         </div>
       </div>
@@ -44,3 +44,38 @@
   </div>
 
 </div>
+
+<modal #modalVerificar>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Confirmacion de Recarga</h4>
+  </modal-header>
+
+  <modal-body>
+    <h3>
+    Abonar <kbd> {{this.radioValue}} $ </kbd> &nbsp; al clente/a &nbsp;{{cliente.nombre}}<br>
+    </h3>
+  </modal-body>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="recargar()" type="button"> Aceptar</button>
+    <button class="btn btn-danger" style="margin-left: 0%" (click)="modalVerificar.close()" type="button"> Cancelar</button>
+  </modal-footer>
+
+</modal>
+
+
+
+<modal #modalRecargaExitosa>
+  <modal-header [show-close]="true">
+
+  </modal-header>
+
+  <modal-body>
+    <h3>
+      Recargar correctamente Realizada
+    </h3>
+  </modal-body>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="recargar()" (click)="modalRecargaExitosa.close()" type="button"> Aceptar</button>
+  </modal-footer>
+
+</modal>
