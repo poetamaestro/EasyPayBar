@@ -2,7 +2,7 @@
 
 <div class="component-container">
   <div class="page-head">
-    <i class="fa fa-chevron-left fa-3x" id="return" aria-hidden="true" routerLink="/menu-proveedor"></i>
+    <i class="fa fa-chevron-left fa-3x" id="return" aria-hidden="true" [routerLink]="['/proveedor', idPro, 'categoria']"></i>
     <h1 class="page-title">{{ titulo }}</h1>
   </div>
   <div class="page-main">
@@ -44,8 +44,6 @@
 </div>
 
 
-
-
 <!-- Modal Eliminar -->
 <modal #modalProductoEliminar>
   <modal-header [show-close]="true">
@@ -53,13 +51,19 @@
   </modal-header>
 
   <modal-body>
-    Nombre: {{ producto.nombre }}
+    <div class="form-group">
+      <h5>Nombre: {{ producto.nombre }}</h5>
+    </div>
+
+    <div class="form-group">
+      <h5>Precio: ${{ producto.precio }}</h5>
+    </div> 
   </modal-body>
 
-
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
-      <button type="button" class="btn btn-danger" style="margin-left: 0px" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-
+  <modal-footer>
+      <button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal" (click)="deleteProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger col-lg-5" style="margin-left: 0px" (click)="modalEliminar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+  </modal-footer>
 </modal>
 
 <!-- Modal Crear -->
@@ -86,17 +90,15 @@
     </div>
     <div class="form-group">
       <label >Imagen</label>
-      <input type="file"   name="file" id="file" [(ngModel)]="producto.imagen"
+      <input type="file" name="file" id="file" [(ngModel)]="producto.imagen"
             >
     </div>
 
   </modal-body>
 
   <modal-footer >
-    <div style="padding-left: 10%">
-      <button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal" (click)="addProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
-      <button type="button" class="btn btn-danger col-lg-5" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-    </div>
+    <button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal" (click)="addProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+    <button type="button" class="btn btn-danger col-lg-5" (click)="modalCrear.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
   </modal-footer>
 </modal>
 
@@ -108,29 +110,25 @@
 
   <modal-body>
       <div class="form-group">
-          <label class="col-lg-3 control-label">Nombre:</label>
-          <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtnombre" [value]="producto.nombre" [(ngModel)]="producto.nombre" placeholder="Ingrese el nombre" />
-          </div>
-      </div>
-    <div class="form-group">
-          <label class="col-lg-3 control-label">Precio:</label>
-          <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtprecio" [value]="producto.precio" [(ngModel)]="producto.precio" placeholder="Ingrese el precio" />
-          </div>
+          <label>Nombre:</label>
+          <input type="text" class="form-control" name="txtnombre" [value]="producto.nombre" [(ngModel)]="producto.nombre" placeholder="Ingrese el nombre" />
       </div>
 
       <div class="form-group">
-          <label class="col-lg-3 control-label">Veces:</label>
-          <div class="col-lg-6">
-              <input type="text" class="form-control" name="txtveces" [value]="producto.veces" [(ngModel)]="producto.veces" placeholder="Ingrese las veces" />
-          </div>
+          <label>Precio:</label>
+          <input type="text" class="form-control" name="txtprecio" [value]="producto.precio" [(ngModel)]="producto.precio" placeholder="Ingrese el precio" />
+      </div>
+
+      <div class="form-group">
+          <label>Veces:</label>
+          <input type="text" class="form-control" name="txtveces" [value]="producto.veces" [(ngModel)]="producto.veces" placeholder="Ingrese las veces" />
       </div>
 
     </modal-body>
 
   <modal-footer>
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
-      <button type="button" class="btn btn-danger" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+      <button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal" (click)="updateProducto()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>
+      <button type="button" class="btn btn-danger col-lg-5" (click)="modalModificar.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
   </modal-footer>
 </modal>
+
