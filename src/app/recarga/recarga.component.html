@@ -56,7 +56,7 @@
     </h3>
   </modal-body>
   <modal-footer>
-    <button class="btn btn-primary" (click)="recargar()" type="button"> Aceptar</button>
+    <button class="btn btn-primary" (click)="recargar()" data-dismiss="modal" type="button"> Aceptar</button>
     <button class="btn btn-danger" style="margin-left: 0%" (click)="modalVerificar.close()" type="button"> Cancelar</button>
   </modal-footer>
 
@@ -75,7 +75,7 @@
     </h3>
   </modal-body>
   <modal-footer>
-    <button class="btn btn-primary" (click)="recargar()" (click)="modalRecargaExitosa.close()" type="button"> Aceptar</button>
+    <button class="btn btn-primary" (click)="recargar()" (click)="modalRecargaExitosa.close()" data-dismiss="modal" type="button"> Aceptar</button>
   </modal-footer>
 
 </modal>
