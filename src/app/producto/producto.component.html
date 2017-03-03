@@ -22,12 +22,10 @@
           </thead>
           <tbody>
           <tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
-
-
-              <td class="text-center">{{produc.nombre}}</td>
-              <td class="text-center">${{produc.precio}}</td>
-              <td class="text-center">{{produc.veces}}</td>
-              <td class="text-center"><img src="{{produc.imagen}}" class="img-rounded" alt="Cinque Terre" ></td>
+              <td class="text-left">{{produc.nombre}}</td>
+              <td class="text-left">${{produc.precio}}</td>
+              <td class="text-left">{{produc.veces}}</td>
+              <td class="text-left col-img"><img src="{{produc.imagen}}" class="img-product" alt="Cinque Terre" ></td>
 
               <td><button class="btn btn-primary btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-pencil"></span> </button></td>
 
