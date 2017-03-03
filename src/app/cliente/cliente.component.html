@@ -26,7 +26,7 @@
 									<button class="btn btn-sm btn-success" (click)="openModalCliente(cli.$key, cli.nombre, cli.codigoQR)"><span class="glyphicon glyphicon-plus"></span></button>	
 								</span>
 								<span *ngSwitchDefault>
-									<button class="btn btn-sm btn-primary" (click)="openModalCliente(cli.$key, cli.nombre, cli.codigoQR)"><span class="glyphicon glyphicon-user"></span></button>	
+									<button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-user"></span></button>	
 								</span>
 							</td>
 						</tr>
@@ -47,26 +47,14 @@
 	</modal-header>
 
 	<modal-body>
-		<div class="form-horizontal">
-			<div class="form-group">
-				<label class="control-label col-md-4">Id:</label>
-				<div class="col-md-8">
-					<h3>{{ cliente.key }}</h3>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-4">Nombre:</label>
-				<div class="col-md-8">
-					<h3>{{ cliente.nombre }}</h3>
-				</div>
-			</div>
+		<div class="form-group">
+			<h5>Nombre: {{ cliente.nombre }}</h5>
 		</div>
-	  	 
 	</modal-body>
 
 	<modal-footer>
-	  	<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateToProveedor()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>	  				
-	  	<button type="button" class="btn btn-danger" (click)="modal.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+	  	<button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal" (click)="updateToProveedor()"><span class="glyphicon glyphicon-check"></span> Confirmar</button>	  				
+	  	<button type="button" class="btn btn-danger col-lg-5" (click)="modal.close()"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
 	  			
 	</modal-footer>
 </modal>
