@@ -4,6 +4,7 @@ import { ClienteService } from '../service/cliente.service';
 import { Cliente } from '../typeScript/cliente';
 import { Subject } from 'rxjs/Subject';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recarga',
@@ -11,6 +12,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
   styleUrls: ['./recarga.component.css'],
   providers:[ ClienteService ]
 })
+
 export class RecargaComponent implements OnInit {
 
   @ViewChild('modalVerificar')

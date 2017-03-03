@@ -538,25 +538,78 @@ i#return:hover {
   border-top-width: 1.5px;
 }
 
+ /* Panel de Trabajo */
+.page-main > .work-container {
+    padding: 15px !important;
+    background: rgba(158, 195, 224, 0.85) !important;
+    border-style: solid !important;
+    border-color: #0a0a0a !important;
+    border-width: thin !important;
+    border-radius: 5px !important;
+}
+
+.work-container label {
+    color: black;
+    font-size: small;
+}
+
+.work-container input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px 0px;
+    font-size: 14px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid #eee;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    box-shadow: none;
+}
+
+.work-container input:focus {
+    background-color: rgba(255, 255, 255, 0.20);
+    border-bottom: 1px solid #333;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+}
+
+.work-container input[type=file]{
+    border: none;
+}
+
+.work-container select{
+    display: block;
+    margin-bottom: 10px;
+    height: initial;
+    width: 100%;
+    color: #333;
+}
+
+.work-container textarea{
+    display: block;
+    width: 100%;
+}
+
+.work-container > .row > .col > .btn{
+  margin-bottom: 10px;
+  width: initial;
+} 
+
+/* Clases extra para las tablas */
+.img-product{
+  max-height: 75px;
+  width: auto;
+}
+
 .menu-panel {
   border-radius: 10px;
   border-style: solid;
   background-color: rgba(78, 93, 108, 0.9);
   margin: 20px;
   padding: 50px 15px;
-}
-
-.work-container {
-  padding: 15px;
-  background: rgba(210, 210, 210, 1);
-  text-align: left;
-  color: black;
-  border-style: inset;
-  border-color: rgba(82, 118, 152, 1);
-}
-
-.work-container label{
-  color: black;
 }
 
 .cliente-container {
