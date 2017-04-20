@@ -35,11 +35,14 @@ export class ClienteService {
   }
 
   createCliente(nom: string, key : string) : void {
+
     this.cliente.codigoQR = key;
     this.cliente.nombre = nom;
     this.cliente.estado = true;
     this.cliente.proveedor = false;
     this.cliente.admin = false;
+    this.cliente.fecha_Afiliacion =  new Date().toLocaleDateString();
+
 
 
   }
