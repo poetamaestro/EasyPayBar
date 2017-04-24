@@ -25,8 +25,6 @@ export class NavConsumidorComponent implements OnInit {
         this.user = auth;
         this.pictureUrl = auth.facebook.photoURL;
 
-
-        
       }
     });
 

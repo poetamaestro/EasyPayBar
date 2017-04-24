@@ -21,7 +21,7 @@ import { ProductoComponent} from './producto/producto.component';
 import {MenuProveedorComponent} from './menu-proveedor/menu-proveedor.component';
 
 export const router: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'menu-admin', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent , canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

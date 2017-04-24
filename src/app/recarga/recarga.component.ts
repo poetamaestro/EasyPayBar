@@ -4,7 +4,7 @@ import { ClienteService } from '../service/cliente.service';
 import { Cliente } from '../typeScript/cliente';
 import { Subject } from 'rxjs/Subject';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-recarga',
@@ -76,6 +76,7 @@ export class RecargaComponent implements OnInit {
   recargar() {
    this.saldo = parseInt(this.radioValue) + parseInt(this.cliente.saldo + "");
    this.clienteService.recargarSaldo(this.cliente.key, this.saldo);
+   this.modalVerificar.close();
    this.modalRecargaExitosa.open();
   }
 

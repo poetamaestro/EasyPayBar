@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import {  Router } from '@angular/router';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-nav',
@@ -16,41 +16,58 @@ export class NavComponent implements OnInit {
   pictureUrl : any;
   isLogin : boolean = false;
   id: string;
+  administrador: boolean = false;
+  proveedor: boolean = false;
 
   constructor(public af: AngularFire,private router: Router) {
 
 
 
-    if(router.url == '/login') {
-      this.isLogin = true;
+  if(router.url == '/login') {
+    this.isLogin = true;
+  }
+
+  this.af.auth.subscribe(auth => {
+    if(auth) {
+      this.user = auth;
+      this.pictureUrl = auth.facebook.photoURL;
+      this.filter(af,auth);
+      const queryObservable = af.database.list('/proveedor', {
+        query: {
+          orderByChild: 'codigoQR',
+          equalTo: auth.uid
+        }
+      });
+
+      queryObservable.subscribe(queriedItems => {
+        if(queriedItems.length > 0) {
+          this.id = queriedItems[0].$key;
+        }
+      });
     }
+  });
+}
 
+  filter(af , auth){
 
-
-    this.af.auth.subscribe(auth => {
-      if(auth) {
-        this.user = auth;
-        this.pictureUrl = auth.facebook.photoURL;
-
-        const queryObservable = af.database.list('/proveedor', {
-          query: {
-            orderByChild: 'codigoQR',
-            equalTo: auth.uid
-          }
-        });
-
-        queryObservable.subscribe(queriedItems => {
-          if(queriedItems.length > 0) {
-            this.id = queriedItems[0].$key;
-          }
-        });
+    const queryObservable = af.database.list('/cliente', {
+      query: {
+        orderByChild: 'codigoQR',
+        equalTo: auth.uid
       }
     });
+
+// subscribe to changes
+    queryObservable.subscribe(queriedItems => {
+      console.log(queriedItems.length);
+      this.administrador =  queriedItems[0].admin;
+      this.proveedor = queriedItems[0].proveedor;
+    });
+
+
+
   }
 
-  a_login() {
-    this.router.navigate(['/login']);
-  }
 
   a_logout() {
     this.af.auth.logout();
