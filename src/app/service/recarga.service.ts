@@ -4,19 +4,19 @@ import { Recarga } from './../typeScript/recarga';
 
 @Injectable()
 export class RecargaService {
-
-recarga : FirebaseListObservable<Recarga[]>;
+recarga: Recarga = new Recarga();
+recargas : FirebaseListObservable<Recarga[]>;
 
   constructor(private db: AngularFireDatabase) {
-  	this.recarga = db.list('/typeScript/recarga');
+  	this.recargas = db.list('/proveedor//recarga');
   }
 
   getRecargas(): FirebaseListObservable<Recarga[]>{
   	return this.db.list('/typeScript/recarga');
   }
 
-  addRecarga(nuevaRecarga: Recarga){
-  	this.recarga.push(nuevaRecarga);
+  addRecarga(nuevaRecarga: Recarga, idProveedor: string , idAfiliado: number){
+  	this.db.list('/proveedor/'+idProveedor+'/afiliados/'+idAfiliado+'/recarga').push(nuevaRecarga);
   }
 
 }

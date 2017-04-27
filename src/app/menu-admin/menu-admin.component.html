@@ -35,12 +35,12 @@
                   <i class="fa fa-address-card-o fa-5x" aria-hidden="true"></i>
                 </div>
                 <div class="col col-md-8">
-                  <h2>Gestionar proveedores</h2>
+                  <h2>Gestionar Afiliados</h2>
                 </div>
               </div>
             </div>
             <div class="function-bottom fill-black">
-              <a routerLink="/proveedor">
+              <a  [routerLink]="['/afiliado', id]">
                 Ver detalles <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
               </a>
             </div>
@@ -140,7 +140,7 @@
               </div>
             </div>
             <div class="function-bottom fill-orange">
-              <a routerLink="/recarga">
+              <a  [routerLink]="['/recarga', id]">
                 Ver detalles <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
               </a>
             </div>

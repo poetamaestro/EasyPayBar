@@ -4,7 +4,7 @@ import { FirebaseListObservable } from 'angularfire2';
 import { Cliente } from './../typeScript/cliente';
 import { ProveedorService } from '../service/proveedor.service';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-cliente',
@@ -27,7 +27,7 @@ export class ClienteComponent implements OnInit {
   constructor(private clienteServicio: ClienteService, private proveedorServicio: ProveedorService) { }
 
   getClientes() : void {
-    this.clientes = this.clienteServicio.getClientes(); 
+    this.clientes = this.clienteServicio.getClientes();
   }
 
   ngOnInit() {
