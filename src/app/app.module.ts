@@ -8,9 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { CollapseDirective } from 'ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap';
-
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
-
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { MenuComponent } from './menu/menu.component';
@@ -32,6 +30,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { NavProveedorComponent } from './nav-proveedor/nav-proveedor.component';
 import { MenuProveedorComponent } from './menu-proveedor/menu-proveedor.component';
 import { NavConsumidorComponent } from './nav-consumidor/nav-consumidor.component';
+import { AfiliadoComponent } from './afiliado/afiliado.component';
 
 
 
@@ -52,14 +51,16 @@ import { NavConsumidorComponent } from './nav-consumidor/nav-consumidor.componen
     ClienteComponent,
     CategoriaComponent,
     ProductoComponent,
-    
+
     CollapseDirective,
-    
+
     NavProveedorComponent,
-    
+
     MenuProveedorComponent,
-    
-    NavConsumidorComponent
+
+    NavConsumidorComponent,
+
+    AfiliadoComponent
   ],
   imports: [
     BrowserModule,

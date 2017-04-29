@@ -4,7 +4,7 @@ import { Recarga } from "./recarga";
 export class Afiliado{
 	key: number;
 	compras: Array<Compra>;
-	fecha_afiliacion: Date;
+	fechaAfiliacion: Date;
 	nombre: string;
 	recargas: Array<Recarga>;
 	saldo: number;
