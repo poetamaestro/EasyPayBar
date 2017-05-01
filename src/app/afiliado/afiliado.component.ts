@@ -8,6 +8,8 @@ import {RecargaService} from '../service/recarga.service';
 import {Recarga} from "../typeScript/recarga";
 import {DatePipe} from "@angular/common";
 
+
+
 @Component({
   selector: 'app-afiliado',
   templateUrl: './afiliado.component.html',
@@ -65,6 +67,8 @@ export class AfiliadoComponent implements OnInit {
     this.modalVerificar.close();
     this.modal.close();
     this.recarga.valor = parseInt(this.radioValue);
+    var saldo = this.afiliado.saldo + parseInt(this.radioValue);
+    this.afiliadoService.ActualizarSaldo(this.id,  saldo+'',this.afiliado.key );
     this.recarga.fecha_Recarga =  this.date.transform(new Date(),'dd/MM/yyyy');
     this.recargaService.addRecarga( this.recarga, this.id, this.afiliado.key);
     this.modalRecargaExitosa.open();

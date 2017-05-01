@@ -41,7 +41,7 @@ export const router: Routes = [
   { path: 'producto', component: ProductoComponent},
   { path: 'proveedor/:id/categoria/:idC/producto', component: ProductoComponent},
   { path: 'menu-proveedor', component: MenuProveedorComponent},
-  { path: 'afiliado/:id', component: AfiliadoComponent}
+  { path: 'afiliado/:id', component: AfiliadoComponent ,canActivate: [AuthGuard] }
 
 ]
 

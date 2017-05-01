@@ -15,7 +15,10 @@ afiliado: Afiliado = new Afiliado();
   getAfiliados( id): FirebaseListObservable<Afiliado[]>{
   	return this.db.list('/proveedor/'+id+'/afiliados');
   }
-
+  ActualizarSaldo(id: number , saldo: string ,idAfiliado: number) {
+    const consultaAfiliadoId = this.db.object('/proveedor/'+id+'/afiliados/'+idAfiliado);
+    consultaAfiliadoId.update({ saldo: saldo });
+  }
   addAfiliado(nuevoAfiliado: Afiliado){
   	this.afiliados.push(nuevoAfiliado);
   }
