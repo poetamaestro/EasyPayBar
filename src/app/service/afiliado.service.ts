@@ -8,9 +8,7 @@ export class AfiliadoService {
 afiliados : FirebaseListObservable<Afiliado[]>;
 afiliado: Afiliado = new Afiliado();
 
-  constructor(private db: AngularFireDatabase) {
-  	this.afiliados = db.list('/proveedor');
-  }
+  constructor(private db: AngularFireDatabase) {  }
 
   getAfiliados( id): FirebaseListObservable<Afiliado[]>{
   	return this.db.list('/proveedor/'+id+'/afiliados');
@@ -19,8 +17,10 @@ afiliado: Afiliado = new Afiliado();
     const consultaAfiliadoId = this.db.object('/proveedor/'+id+'/afiliados/'+idAfiliado);
     consultaAfiliadoId.update({ saldo: saldo });
   }
-  addAfiliado(nuevoAfiliado: Afiliado){
-  	this.afiliados.push(nuevoAfiliado);
+  addAfiliado(nuevoAfiliado: Afiliado, id){
+    this.db.list('/proveedor/'+id+'/afiliados').push(nuevoAfiliado);
+
+
   }
 
 }
