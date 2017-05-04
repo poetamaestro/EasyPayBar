@@ -42,9 +42,14 @@ export class ClienteService {
     this.cliente.proveedor = false;
     this.cliente.admin = false;
     this.cliente.fecha_Afiliacion =  new Date().toLocaleDateString();
-
-
-
+  }
+  getCliente(nombre){
+    return this.db.list('/cliente',{
+      query: {
+        orderByChild: 'nombre',
+        equalTo : nombre
+      }
+    });
   }
 
 }
