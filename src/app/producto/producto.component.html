@@ -1,4 +1,4 @@
-<app-nav-proveedor></app-nav-proveedor>
+<app-nav></app-nav>
 
 <div class="component-container">
   <div class="page-head">
@@ -8,38 +8,81 @@
   <div class="page-main">
     <div class="page-section">
       <div class="row">
-        <button class="btn btn-success" (click)="modalCrear.open()"><span class="glyphicon glyphicon-plus"></span> Crear nuevo producto</button>
-        <table class="table table-hovered">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Veces Compradas</th>
-              <th>Imagen</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let produc of productos | async | paginate: { itemsPerPage: 5, currentPage: p }">
-              <td class="text-left">{{produc.nombre}}</td>
-              <td class="text-left">${{produc.precio}}</td>
-              <td class="text-left">{{produc.veces}}</td>
-              <td class="text-left col-img"><img src="{{produc.imagen}}" class="img-product" alt="Cinque Terre" ></td>
-
-              <td><button class="btn btn-primary btn-sm" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-pencil"></span> </button></td>
-
-              <td><button class="btn btn-danger btn-sm" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><span class="glyphicon glyphicon-remove"></span> </button></td>
-            </tr>
-          </tbody>
-        </table>
+        <button class="btn btn-success" (click)="openModalProductoCrear()"><span class="glyphicon glyphicon-plus"></span> Crear nuevo producto</button>
+        <div class="input-group search-bar" style="width: 40%; margin-left: 20px;">
+           <input type="text" class="form-control text-primary" [(ngModel)]="pista" placeholder="Ingrese el producto a buscar">
+           <span class="input-group-btn">
+              <button class="btn btn-success" (click)="buscarProducto()" type="button">Buscar <i class="fa fa-search-plus" aria-hidden="true"></i></button>
+           </span>
+           <div class="alert-danger"><strong>{{ resultado }}</strong></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-3" *ngFor="let produc of productos | async | paginate: { itemsPerPage: 8, currentPage: p }">
+          <div class="product-panel main-color-black">
+            <div class="product-img">
+              <img src="{{produc.imagen}}" alt="Cinque Terre" >              
+            </div>
+            <div class="product-inf">
+              <h4><strong>{{produc.nombre}}</strong></h4>
+              <h6>${{produc.precio}}</h6>
+            </div>
+            <div class="product-bottom top-line-black">
+              <button class="btn btn-xs btn-primary" (click)="openModalProductoVerDetalle(produc.$key, produc.nombre, produc.precio, produc.veces, produc.imagen)"><i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button class="btn btn-xs btn-success" (click)="openModalProductoEditar(produc.$key, produc.nombre, produc.precio, produc.veces, produc.imagen)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              </button>
+              <button class="btn btn-xs btn-danger" (click)="openModalProductoEliminar(produc.$key, produc.nombre, produc.precio, produc.veces)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <!-- Pagination -->
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>
-
 </div>
+
+
+<!-- Modal Ver Detalle -->
+<modal #modalProductoVerDetalle>
+  <modal-header [show-close]="false">
+      <h4 class="modal-title">Detalle del producto</h4>
+  </modal-header>
+
+  <modal-body>
+    <div class="row">
+      <div class="col col-sm-6">
+        <div class="form-group">
+          <label>Nombre:</label>
+          <h5><strong>{{producto.nombre}}</strong></h5>
+        </div>
+
+        <div class="form-group">
+          <label>Precio:</label>
+          <h5><strong>{{producto.precio}}</strong></h5>
+        </div>
+
+        <div class="form-group">
+          <label>Veces:</label>
+          <h5><strong>{{producto.veces}}</strong></h5>
+        </div>
+      </div>
+      <div class="col col-sm-6">
+          <img src="{{producto.imagen}}" alt="Producto" >
+      </div>
+    </div>   
+  </modal-body>
+
+  <modal-footer>
+      <button type="button" class="btn btn-danger" style="margin-left: 0px" (click)="modalProductoVerDetalle.close()">
+        <span class="glyphicon glyphicon-remove"></span> Salir
+      </button>
+  </modal-footer>
+</modal>
 
 
 <!-- Modal Eliminar -->
@@ -55,7 +98,7 @@
 
     <div class="form-group">
       <h5>Precio: ${{ producto.precio }}</h5>
-    </div> 
+    </div>
   </modal-body>
 
   <modal-footer>
@@ -88,8 +131,7 @@
     </div>
     <div class="form-group">
       <label >Imagen</label>
-      <input type="file" name="file" id="file" [(ngModel)]="producto.imagen"
-            >
+      <input type="file" name="file" id="file" [(ngModel)]="producto.imagen">
     </div>
 
   </modal-body>
@@ -107,20 +149,28 @@
   </modal-header>
 
   <modal-body>
-      <div class="form-group">
+    <div class="row">
+      <div class="col col-sm-6">
+        <div class="form-group">
           <label>Nombre:</label>
           <input type="text" class="form-control" name="txtnombre" [value]="producto.nombre" [(ngModel)]="producto.nombre" placeholder="Ingrese el nombre" />
+        </div>
+        <div class="form-group">
+            <label>Precio:</label>
+            <input type="text" class="form-control" name="txtprecio" [value]="producto.precio" [(ngModel)]="producto.precio" placeholder="Ingrese el precio" />
+        </div>
+        <div class="form-group">
+            <label>Veces:</label>
+            <input type="text" class="form-control" name="txtveces" [value]="producto.veces" [(ngModel)]="producto.veces" placeholder="Ingrese las veces" />
+        </div>        
       </div>
-
-      <div class="form-group">
-          <label>Precio:</label>
-          <input type="text" class="form-control" name="txtprecio" [value]="producto.precio" [(ngModel)]="producto.precio" placeholder="Ingrese el precio" />
+      <div class="col col-sm-6">
+        <label >Imagen</label>
+        <img src="{{producto.imagen}}" alt="Producto" >
+        <input type="file" name="file" id="file" [(ngModel)]="producto.imagen">
       </div>
-
-      <div class="form-group">
-          <label>Veces:</label>
-          <input type="text" class="form-control" name="txtveces" [value]="producto.veces" [(ngModel)]="producto.veces" placeholder="Ingrese las veces" />
-      </div>
+    </div>
+      
 
     </modal-body>
 

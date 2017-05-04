@@ -604,6 +604,70 @@ i#return:hover {
   width: auto;
 }
 
+/* Panel de Productos */
+.product-panel {
+    margin: 5px;
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.product-img {
+    padding: 5px;
+    text-align: center;
+    width: auto;
+    height: 150px;
+}
+
+.product-img img {
+    height: inherit;
+    border-radius: 100%;
+}
+
+.product-inf{
+    padding-left: 5px;
+}
+
+.product-inf h4{
+  margin-bottom: 3px;
+}
+
+.product-inf h6{
+  margin-top: 2px;
+}
+
+.product-bottom{
+    padding-top: 10px;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.product-bottom button {
+  width: auto;
+}
+
+.product-bottom button:hover {
+    text-decoration: underline;
+    text-decoration-color: #333;
+}
+
+
+/* Clases extra para el panel de productos*/
+
+
+
+
+/* Barra de busqueda*/
+.search-bar{
+
+}
+
+.search-bar span .btn {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-left-width: 0.25px;
+}
+
 .menu-panel {
   border-radius: 10px;
   border-style: solid;

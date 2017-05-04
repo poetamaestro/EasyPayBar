@@ -18,6 +18,7 @@ export class MenuProveedorComponent implements OnInit {
   constructor(public af: AngularFire,private router: Router) {
     if(router.url == '/login') {
       this.isLogin = true;
+
     }
 
 
@@ -50,6 +51,7 @@ export class MenuProveedorComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

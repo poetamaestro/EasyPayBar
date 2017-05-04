@@ -1,13 +1,13 @@
 <app-nav></app-nav>
 <div class="component-container">
   <div class="page-head">
-    <h1 class="page-title">Funciones de administrador</h1>
+    <h1 class="page-title">Funciones:&nbsp;</h1><h1 *ngIf="administrador" class="page-title">Administrador &nbsp;</h1><h1 *ngIf="proveedor"  class="page-title">Proveedor </h1>
   </div>
   <div class="page-main">
     <div class="page-section">
       <div class="row ">
         <!-- Gestionar Cliente-->
-        <div class="col col-md-5">
+        <div *ngIf="administrador" class="col col-md-3">
           <div class="function-panel main-color-blue">
             <div class="function-body">
               <div class="row">
@@ -26,8 +26,8 @@
             </div>
           </div>
         </div>
-        <!--Gestionar Cliente-->
-        <div class="col col-md-5">
+        <!--Gestionar proveedores-->
+        <div *ngIf="administrador" class="col col-md-3">
           <div class="function-panel main-color-black">
             <div class="function-body">
               <div class="row">
@@ -35,24 +35,19 @@
                   <i class="fa fa-address-card-o fa-5x" aria-hidden="true"></i>
                 </div>
                 <div class="col col-md-8">
-                  <h2>Gestionar proveedores</h2>
+                  <h2>Gestionar Afiliados</h2>
                 </div>
               </div>
             </div>
             <div class="function-bottom fill-black">
-              <a routerLink="/proveedor">
+              <a  [routerLink]="['/afiliado', id]">
                 Ver detalles <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
-
-      </div>
-      <br>
-      <!--
-       <div class="row">
-
-        <div class="col col-md-3">
+         <!--Gestionar Categoria-->
+        <div *ngIf="proveedor" class="col col-md-3">
           <div class="function-panel main-color-orange">
             <div class="function-body">
               <div class="row">
@@ -65,15 +60,14 @@
               </div>
             </div>
             <div class="function-bottom fill-orange">
-              <a routerLink="/categoria">
+              <a [routerLink]="['/proveedor', id, 'categoria']">
                 Ver detalles <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
               </a>
-
             </div>
           </div>
         </div>
-
-        <div class="col col-md-3">
+         <!--Gestionar producto-->
+        <div *ngIf="proveedor"  class="col col-md-3">
           <div class="function-panel main-color-red">
             <div class="function-body">
               <div class="row">
@@ -92,8 +86,8 @@
             </div>
           </div>
         </div>
-
-        <div class="col col-md-3">
+         <!--Gestionar Menu-->
+        <div *ngIf="proveedor" class="col col-md-3">
           <div class="function-panel main-color-blue">
             <div class="function-body">
               <div class="row">
@@ -112,8 +106,8 @@
             </div>
           </div>
         </div>
-
-        <div class="col col-md-3">
+         <!--Registrar compra-->
+        <div *ngIf="proveedor" class="col col-md-3">
           <div class="function-panel main-color-black">
             <div class="function-body">
               <div class="row">
@@ -132,8 +126,8 @@
             </div>
           </div>
         </div>
-
-        <div class="col col-md-3">
+         <!--Registrar credito-->
+        <div *ngIf="proveedor" class="col col-md-3">
           <div class="function-panel main-color-orange">
             <div class="function-body">
               <div class="row">
@@ -146,14 +140,14 @@
               </div>
             </div>
             <div class="function-bottom fill-orange">
-              <a routerLink="/recarga">
+              <a  [routerLink]="['/recarga', id]">
                 Ver detalles <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
-    -->
+
     </div>
   </div>
 </div>

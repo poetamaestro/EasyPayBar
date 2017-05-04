@@ -1,4 +1,4 @@
-<app-nav-proveedor></app-nav-proveedor>
+<app-nav></app-nav>
 
 <div class="component-container">
   <div class="page-head">
@@ -15,11 +15,14 @@
               <button class="btn btn-primary" (click)="buscarCliente()" type="button">Buscar <i class="fa fa-search-plus" aria-hidden="true"></i></button>
             </span>
          </div><!-- /input-group -->
-         <br>
+
          <h5><strong>{{ listado }}</strong></h5>
-         <ul class="list-group" style="padding-top:  5%; margin-left: 0%;">
+         <ul class="list-group" style=" margin-left: 0%;">
            <li class="list-group-item" *ngFor="let item of clientes | async">
-              <button class="btn btn-default" (click)="setCliente(item)" type="button">{{ item.nombre }} <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+              <button class="btn btn-default" (click)="setCliente(item)" type="button">{{ item.nombre }} <i class="fa fa-user-plus" aria-hidden="true">
+              </i>
+              </button>
+           </li>
          </ul>
          <div class="alert-danger"><strong>{{ resultado }}</strong></div>
        </div>
@@ -66,13 +69,13 @@
     <h4 class="modal-title">Mensaje</h4>
   </modal-header>
 
-  <modal-body>
+  <modal-body >
     <h3>
       Recargar correctamente Realizada
     </h3>
   </modal-body>
 
-  <modal-footer>
+  <modal-footer style="text-align: center">
     <button type="button" class="btn btn-primary col-lg-5" data-dismiss="modal"><i class="fa fa-check-square" aria-hidden="true"></i> Aceptar</button>
   </modal-footer>
 </modal>

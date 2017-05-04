@@ -14,31 +14,25 @@ import {Subject} from 'rxjs/Subject';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-
   providers:[ AdminService,ClienteService]
 })
 export class LoginComponent implements OnInit {
   userFb = {};
   error: any;
   admins :  FirebaseListObservable<Admin[]>;
-  clientes : FirebaseListObservable<Cliente[]>;
-
   cliente: Cliente = new Cliente();
   contador: number = 0;
 
   constructor(public af: AngularFire,private router: Router, private adminService: AdminService ,private clienteService: ClienteService) {
 
-
-
     this.af.auth.subscribe(auth => {
 
       if(auth) {
         this.filterAdmin(af,auth);
+
       }
     });
   }
-
-
 
   filterAdmin(af , auth){
     const subject = new Subject();
@@ -53,16 +47,15 @@ export class LoginComponent implements OnInit {
     queryObservable.subscribe(queriedItems => {
       console.log(queriedItems.length);
       if(queriedItems.length > 0){
-        console.log(queriedItems[0].admin);
-        if(queriedItems[0].admin){
+
+        if(queriedItems[0].admin || queriedItems[0].proveedor){
           this.router.navigateByUrl('/menu-admin');
-        }else if(queriedItems[0].proveedor){
-          this.router.navigateByUrl('/menu-proveedor');
         }
         else{
-          this.router.navigateByUrl('/menu');
+            this.router.navigateByUrl('/menu');
         }
-      }else{
+      }
+      else{
         this.registrarCliente(auth);
         this.router.navigateByUrl('/menu');
       }

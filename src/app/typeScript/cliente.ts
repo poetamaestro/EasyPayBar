@@ -2,7 +2,7 @@ export class Cliente{
 	key :number;
 	codigoQR: string;
 	estado: boolean;
-	fecha_Afiliacion: Date;
+	fecha_Afiliacion: string;
 	fecha_Nacimiento: Date;
 	nombre: string;
 	proveedor: boolean;

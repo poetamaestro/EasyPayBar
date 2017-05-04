@@ -4,7 +4,8 @@ import { ClienteService } from '../service/cliente.service';
 import { Cliente } from '../typeScript/cliente';
 import { Subject } from 'rxjs/Subject';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-recarga',
@@ -20,23 +21,23 @@ export class RecargaComponent implements OnInit {
   @ViewChild('modalRecargaExitosa')
   modalRecargaExitosa: ModalComponent;
 
-  titulo= "Registro de Crédito";
+
   cliente: Cliente = new Cliente();
+  clientes: FirebaseListObservable<any[]>;
+
+  titulo= "Registro de Crédito";
   nombre: string = "";
   saldo: number;
   radioValue: string= "";
   listado: string = "";
   resultado: string = "";
-  clientes: FirebaseListObservable<any[]>;
 
-  constructor(public af: AngularFire, public clienteService: ClienteService) {
+  private id;
+  private sub: any;
 
-    this.af.auth.subscribe(auth => {
+  constructor(public af: AngularFire, public clienteService: ClienteService, private route: ActivatedRoute) {
 
-      if(auth) {
 
-      }
-    });
   }
 
   buscarCliente() {
@@ -63,7 +64,15 @@ export class RecargaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    if(this.id != null){
+     // this.buscarAfiliados();
+    }
   }
+
+
 
   setCliente(cliente) {
     this.cliente.nombre = cliente.nombre;
@@ -76,6 +85,7 @@ export class RecargaComponent implements OnInit {
   recargar() {
    this.saldo = parseInt(this.radioValue) + parseInt(this.cliente.saldo + "");
    this.clienteService.recargarSaldo(this.cliente.key, this.saldo);
+   this.modalVerificar.close();
    this.modalRecargaExitosa.open();
   }
 
